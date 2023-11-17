@@ -72,6 +72,8 @@ export const App = () => {
     setEpubUrl(url);
   }
 
+  console.log(renderBook(''))
+
   const [location, setLocation] = useLocalStorageState<string | number>(
     "persist-location",
     {
