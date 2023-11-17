@@ -67,6 +67,7 @@ export const App = () => {
   });
   const [theme, setTheme] = useState("light");
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   function renderBook(url: string) {
     setEpubUrl(url);
   }
