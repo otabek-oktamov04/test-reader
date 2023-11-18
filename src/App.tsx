@@ -67,12 +67,14 @@ export const App = () => {
   });
   const [theme, setTheme] = useState("light");
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  function renderBook(url: string) {
-    setEpubUrl(url);
-  }
+useEffect(()=>{
+  const urlParams = new URLSearchParams(window.location.search);
+  const urlLink = urlParams.get('url');
+if(urlLink){
+  setEpubUrl(urlLink)
+}
+},[])
 
-  console.log(renderBook(''))
 
   const [location, setLocation] = useLocalStorageState<string | number>(
     "persist-location",
@@ -178,7 +180,7 @@ export const App = () => {
         width: "100vw",
       }}
     >
-      <ReactReader
+    <ReactReader
         url={epubUrl}
         epubOptions={{
           flow: mode,
@@ -227,7 +229,7 @@ export const App = () => {
           style={{
             cursor: "pointer",
           }}
-          src="/files/settings.svg"
+          src="/settings.svg"
           width="25px"
           height="25px"
         />
