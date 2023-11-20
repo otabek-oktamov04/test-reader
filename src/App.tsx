@@ -28,7 +28,7 @@ function updateTheme(rendition: Rendition, theme: string) {
       break;
     }
     case "midDark": {
-      themes.override("color", "#48484a");
+      themes.override("color", "#fff");
       themes.override("background", "#48484a");
       break;
     }
