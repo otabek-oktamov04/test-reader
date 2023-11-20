@@ -9,7 +9,7 @@ function updateTheme(rendition: Rendition, theme: string) {
   switch (theme) {
     case "dark": {
       themes.override("color", "#fff");
-      themes.override("background", "#48484a");
+      themes.override("background", "#000");
       break;
     }
     case "light": {
@@ -27,27 +27,32 @@ function updateTheme(rendition: Rendition, theme: string) {
       themes.override("background", "#f8f2e5");
       break;
     }
+    case "midDark": {
+      themes.override("color", "#48484a");
+      themes.override("background", "#48484a");
+      break;
+    }
   }
 }
 
 function updateFontFamily(rendition: Rendition, font: string) {
-  const themes = rendition.themes
+  const themes = rendition.themes;
   switch (font) {
     case "'Arvo', serif": {
-      themes.override('font-family', "'Arvo', serif")
-      break
+      themes.override("font-family", "'Arvo', serif");
+      break;
     }
     case "'Source Code Pro', monospace": {
-      themes.override('font-family', "'Source Code Pro', monospace")
-      break
+      themes.override("font-family", "'Source Code Pro', monospace");
+      break;
     }
     case "'Playpen Sans', cursive": {
-      themes.override('font-family', "'Playpen Sans', cursive")
-      break
+      themes.override("font-family", "'Playpen Sans', cursive");
+      break;
     }
     case "'Onest', sans-serif": {
-      themes.override('font-family', "'Onest', sans-serif")
-      break
+      themes.override("font-family", "'Onest', sans-serif");
+      break;
     }
   }
 }
@@ -105,7 +110,10 @@ export const App = () => {
       setTheme(locTheme || "light");
     }
     setTimeout(() => {
-      if (locTheme === "dark" && rendition.current) {
+      if (
+        (locTheme === "dark" || locTheme === "midDark") &&
+        rendition.current
+      ) {
         rendition.current.themes.override("color", "#fff");
       }
     }, 500);
@@ -133,26 +141,40 @@ export const App = () => {
       ...ReactReaderStyle.readerArea,
       background: "#fff",
     },
-    prev:{
-      display:'none'
+    prev: {
+      display: "none",
     },
-    next:{
-      display:'none'
-    }
+    next: {
+      display: "none",
+    },
   };
 
   const darkReaderTheme: IReactReaderStyle = {
     ...ReactReaderStyle,
     readerArea: {
       ...ReactReaderStyle.readerArea,
+      background: "#000",
+    },
+    prev: {
+      display: "none",
+    },
+    next: {
+      display: "none",
+    },
+  };
+
+  const midDarkReaderTheme: IReactReaderStyle = {
+    ...ReactReaderStyle,
+    readerArea: {
+      ...ReactReaderStyle.readerArea,
       background: "#48484a",
     },
-    prev:{
-      display:'none'
+    prev: {
+      display: "none",
     },
-    next:{
-      display:'none'
-    }
+    next: {
+      display: "none",
+    },
   };
 
   const greenReaderTheme: IReactReaderStyle = {
@@ -161,12 +183,12 @@ export const App = () => {
       ...ReactReaderStyle.readerArea,
       background: "#ceeaba",
     },
-    prev:{
-      display:'none'
+    prev: {
+      display: "none",
     },
-    next:{
-      display:'none'
-    }
+    next: {
+      display: "none",
+    },
   };
 
   const pinkReaderTheme: IReactReaderStyle = {
@@ -175,12 +197,12 @@ export const App = () => {
       ...ReactReaderStyle.readerArea,
       background: "#f8f2e5",
     },
-    prev:{
-      display:'none'
+    prev: {
+      display: "none",
     },
-    next:{
-      display:'none'
-    }
+    next: {
+      display: "none",
+    },
   };
 
   const readerTheme = () => {
@@ -190,6 +212,8 @@ export const App = () => {
       return greenReaderTheme;
     } else if (theme === "pink") {
       return pinkReaderTheme;
+    } else if (theme === "midDark") {
+      return midDarkReaderTheme;
     } else {
       return lightReaderTheme;
     }
@@ -206,7 +230,7 @@ export const App = () => {
       <ReactReader
         url={epubUrl}
         epubOptions={{
-          flow: mode ==='scrolled' ? 'scrolled' : 'paginated',
+          flow: mode === "scrolled" ? "scrolled" : "paginated",
           manager: "continuous",
         }}
         swipeable={mode === "paginated"}
@@ -220,9 +244,9 @@ export const App = () => {
             const { displayed, href } = rendition.current.location.start;
             const chapter = toc.current.find((item) => item.href === href);
             setPage(
-              `${
-                chapter ? chapter.label : "n/a"
-              } Bobidagi ${displayed.page} sahifa`
+              `${chapter ? chapter.label : "n/a"} Bobidagi ${
+                displayed.page
+              } sahifa`
             );
           }
         }}
@@ -326,27 +350,7 @@ export const App = () => {
             >
               Aa
             </div>
-            <div
-              className="color "
-              onClick={() => {
-                setTheme("dark");
-                localStorage.setItem("theme", "dark");
-              }}
-              style={{
-                background: "#48484a",
-                padding: "10px",
-                borderRadius: "8px",
-                border:
-                  theme === "dark" ? "1px solid #F97010" : "1px solid #dadfdd",
-                width: "20vw",
-                boxSizing: "border-box",
-                textAlign: "center",
-                cursor: "pointer",
-                color: "white",
-              }}
-            >
-              Aa
-            </div>
+
             <div
               className="color"
               onClick={() => {
@@ -363,6 +367,50 @@ export const App = () => {
                 boxSizing: "border-box",
                 textAlign: "center",
                 cursor: "pointer",
+              }}
+            >
+              Aa
+            </div>
+            <div
+              className="color "
+              onClick={() => {
+                setTheme("midDark");
+                localStorage.setItem("theme", "midDark");
+              }}
+              style={{
+                background: "#48484a",
+                padding: "10px",
+                borderRadius: "8px",
+                border:
+                  theme === "midDark"
+                    ? "1px solid #F97010"
+                    : "1px solid #dadfdd",
+                width: "20vw",
+                boxSizing: "border-box",
+                textAlign: "center",
+                cursor: "pointer",
+                color: "white",
+              }}
+            >
+              Aa
+            </div>
+            <div
+              className="color "
+              onClick={() => {
+                setTheme("dark");
+                localStorage.setItem("theme", "dark");
+              }}
+              style={{
+                background: "#000",
+                padding: "10px",
+                borderRadius: "8px",
+                border:
+                  theme === "dark" ? "1px solid #F97010" : "1px solid #dadfdd",
+                width: "20vw",
+                boxSizing: "border-box",
+                textAlign: "center",
+                cursor: "pointer",
+                color: "white",
               }}
             >
               Aa
@@ -608,7 +656,6 @@ export const App = () => {
         </div>
       </div>
 
-      
       <div
         onClick={() => {
           setIsOpen(false);
