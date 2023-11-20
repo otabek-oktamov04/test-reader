@@ -31,23 +31,23 @@ function updateTheme(rendition: Rendition, theme: string) {
 }
 
 function updateFontFamily(rendition: Rendition, font: string) {
-  const themes = rendition.themes;
+  const themes = rendition.themes
   switch (font) {
     case "'Arvo', serif": {
-      themes.override("font-family", "'Arvo', serif");
-      break;
+      themes.override('font-family', "'Arvo', serif")
+      break
     }
     case "'Source Code Pro', monospace": {
-      themes.override("font-family", "'Source Code Pro', monospace");
-      break;
+      themes.override('font-family', "'Source Code Pro', monospace")
+      break
     }
     case "'Playpen Sans', cursive": {
-      themes.override("font-family", "'Playpen Sans', cursive");
-      break;
+      themes.override('font-family', "'Playpen Sans', cursive")
+      break
     }
     case "'Onest', sans-serif": {
-      themes.override("font-family", "'Onest', sans-serif");
-      break;
+      themes.override('font-family', "'Onest', sans-serif")
+      break
     }
   }
 }
@@ -67,14 +67,13 @@ export const App = () => {
   });
   const [theme, setTheme] = useState("light");
 
-useEffect(()=>{
-  const urlParams = new URLSearchParams(window.location.search);
-  const urlLink = urlParams.get('url');
-if(urlLink){
-  setEpubUrl(urlLink)
-}
-},[])
-
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const urlLink = urlParams.get("url");
+    if (urlLink) {
+      setEpubUrl(urlLink);
+    }
+  }, []);
 
   const [location, setLocation] = useLocalStorageState<string | number>(
     "persist-location",
@@ -134,6 +133,12 @@ if(urlLink){
       ...ReactReaderStyle.readerArea,
       background: "#fff",
     },
+    prev:{
+      display:'none'
+    },
+    next:{
+      display:'none'
+    }
   };
 
   const darkReaderTheme: IReactReaderStyle = {
@@ -142,6 +147,12 @@ if(urlLink){
       ...ReactReaderStyle.readerArea,
       background: "#48484a",
     },
+    prev:{
+      display:'none'
+    },
+    next:{
+      display:'none'
+    }
   };
 
   const greenReaderTheme: IReactReaderStyle = {
@@ -150,6 +161,12 @@ if(urlLink){
       ...ReactReaderStyle.readerArea,
       background: "#ceeaba",
     },
+    prev:{
+      display:'none'
+    },
+    next:{
+      display:'none'
+    }
   };
 
   const pinkReaderTheme: IReactReaderStyle = {
@@ -158,6 +175,12 @@ if(urlLink){
       ...ReactReaderStyle.readerArea,
       background: "#f8f2e5",
     },
+    prev:{
+      display:'none'
+    },
+    next:{
+      display:'none'
+    }
   };
 
   const readerTheme = () => {
@@ -180,23 +203,27 @@ if(urlLink){
         width: "100vw",
       }}
     >
-    <ReactReader
+      <ReactReader
         url={epubUrl}
         epubOptions={{
-          flow: mode,
+          flow: mode ==='scrolled' ? 'scrolled' : 'paginated',
           manager: "continuous",
         }}
         swipeable={mode === "paginated"}
-        title="Yoki - Ebook Reader"
         location={location}
         tocChanged={(_toc) => (toc.current = _toc)}
+        title={page}
         readerStyles={readerTheme()}
         locationChanged={(loc: string) => {
           setLocation(loc);
           if (rendition.current && toc.current) {
-            const { displayed } = rendition.current.location.start;
-            // const chapter = toc.current.find((item) => item.href === href)
-            setPage(`Page ${displayed.page} of ${displayed.total}`);
+            const { displayed, href } = rendition.current.location.start;
+            const chapter = toc.current.find((item) => item.href === href);
+            setPage(
+              `${
+                chapter ? chapter.label : "n/a"
+              } Bobidagi ${displayed.page} sahifa`
+            );
           }
         }}
         getRendition={(_rendition: Rendition) => {
@@ -217,10 +244,8 @@ if(urlLink){
       <div
         style={{
           position: "absolute",
-
           top: "15px",
           right: "10px",
-
           zIndex: 99,
         }}
       >
@@ -240,7 +265,7 @@ if(urlLink){
           position: "absolute",
           background: "white",
           bottom: "0",
-          width: "90vw",
+          width: "92.5vw",
           height: "60vh",
           borderTopLeftRadius: "10px",
           borderTopRightRadius: "10px",
@@ -272,7 +297,7 @@ if(urlLink){
                 padding: "10px",
                 borderRadius: "8px",
                 border:
-                  theme === "light" ? "1px solid #FFFF00" : "1px solid #dadfdd",
+                  theme === "light" ? "1px solid #F97010" : "1px solid #dadfdd",
                 width: "20vw",
                 boxSizing: "border-box",
                 textAlign: "center",
@@ -292,7 +317,7 @@ if(urlLink){
                 padding: "10px",
                 borderRadius: "8px",
                 border:
-                  theme === "green" ? "1px solid #FFFF00" : "1px solid #dadfdd",
+                  theme === "green" ? "1px solid #F97010" : "1px solid #dadfdd",
                 width: "20vw",
                 boxSizing: "border-box",
                 textAlign: "center",
@@ -312,7 +337,7 @@ if(urlLink){
                 padding: "10px",
                 borderRadius: "8px",
                 border:
-                  theme === "dark" ? "1px solid #FFFF00" : "1px solid #dadfdd",
+                  theme === "dark" ? "1px solid #F97010" : "1px solid #dadfdd",
                 width: "20vw",
                 boxSizing: "border-box",
                 textAlign: "center",
@@ -333,7 +358,7 @@ if(urlLink){
                 padding: "10px",
                 borderRadius: "8px",
                 border:
-                  theme === "pink" ? "1px solid #FFFF00" : "1px solid #dadfdd",
+                  theme === "pink" ? "1px solid #F97010" : "1px solid #dadfdd",
                 width: "20vw",
                 boxSizing: "border-box",
                 textAlign: "center",
@@ -369,7 +394,7 @@ if(urlLink){
                 borderRadius: "8px",
                 border:
                   fontFamily === "'Arvo', serif"
-                    ? "1px solid #FFFF00"
+                    ? "1px solid #F97010"
                     : "1px solid #dadfdd",
                 width: "20vw",
                 boxSizing: "border-box",
@@ -393,7 +418,7 @@ if(urlLink){
                 borderRadius: "8px",
                 border:
                   fontFamily === "'Source Code Pro', monospace"
-                    ? "1px solid #FFFF00"
+                    ? "1px solid #F97010"
                     : "1px solid #dadfdd",
                 width: "20vw",
                 boxSizing: "border-box",
@@ -414,7 +439,7 @@ if(urlLink){
                 borderRadius: "8px",
                 border:
                   fontFamily === "'Playpen Sans', cursive"
-                    ? "1px solid #FFFF00"
+                    ? "1px solid #F97010"
                     : "1px solid #dadfdd",
                 width: "20vw",
                 boxSizing: "border-box",
@@ -435,7 +460,7 @@ if(urlLink){
                 borderRadius: "8px",
                 border:
                   fontFamily === "'Onest', sans-serif"
-                    ? "1px solid #FFFF00"
+                    ? "1px solid #F97010"
                     : "1px solid #dadfdd",
                 width: "20vw",
                 boxSizing: "border-box",
@@ -443,7 +468,7 @@ if(urlLink){
                 cursor: "pointer",
               }}
             >
-              Onest
+              Avenir
             </div>
           </div>
         </div>
@@ -483,7 +508,7 @@ if(urlLink){
                 textAlign: "center",
                 cursor: "pointer",
                 border: selectedStyles.font1
-                  ? "1px solid #FFFF00"
+                  ? "1px solid #F97010"
                   : "1px solid #dadfdd",
               }}
             >
@@ -511,7 +536,7 @@ if(urlLink){
                 textAlign: "center",
                 cursor: "pointer",
                 border: selectedStyles.font2
-                  ? "1px solid #FFFF00"
+                  ? "1px solid #F97010"
                   : "1px solid #dadfdd",
               }}
             >
@@ -550,7 +575,7 @@ if(urlLink){
                 cursor: "pointer",
                 border:
                   mode === "paginated"
-                    ? "1px solid #FFFF00"
+                    ? "1px solid #F97010"
                     : "1px solid #dadfdd",
               }}
             >
@@ -561,7 +586,7 @@ if(urlLink){
               className="color"
               onClick={() => {
                 setMode("scrolled");
-                localStorage.setItem("page", "scrolled");
+                localStorage.setItem("mode", "scrolled");
               }}
               style={{
                 background: "#FAFCFB",
@@ -573,7 +598,7 @@ if(urlLink){
                 cursor: "pointer",
                 border:
                   mode !== "paginated"
-                    ? "1px solid #FFFF00"
+                    ? "1px solid #F97010"
                     : "1px solid #dadfdd",
               }}
             >
@@ -583,28 +608,7 @@ if(urlLink){
         </div>
       </div>
 
-      {page && (
-        <div
-          style={{
-            position: "absolute",
-            background: "white",
-            bottom: "20px",
-            width: "50vw",
-            right: "25vw",
-
-            borderRadius: "10px",
-
-            zIndex: 98,
-            boxShadow: " 0px -1px 13px 1px #0b3d3433",
-            textAlign: "center",
-            padding: "5px",
-            fontWeight: "600",
-          }}
-        >
-          {page}
-        </div>
-      )}
-
+      
       <div
         onClick={() => {
           setIsOpen(false);
