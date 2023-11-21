@@ -46,8 +46,8 @@ function updateFontFamily(rendition: Rendition, font: string) {
       themes.override("font-family", "'Source Code Pro', monospace");
       break;
     }
-    case "'Playpen Sans', cursive": {
-      themes.override("font-family", "'Playpen Sans', cursive");
+    case "'Literata', serif": {
+      themes.override("font-family", "'Literata', serif");
       break;
     }
     case "'Onest', sans-serif": {
@@ -147,6 +147,41 @@ export const App = () => {
     next: {
       display: "none",
     },
+    containerExpanded: {
+      transform: "translateX(-100vw)",
+    },
+    tocButton: {
+      ...ReactReaderStyle.tocButton,
+      left: "none",
+      right: "0px",
+      position: "fixed",
+      zIndex: 999,
+    },
+ tocButtonBarTop:{
+  ...ReactReaderStyle.tocButtonBarTop,
+  background:'#4D5250',
+  height:'2px'
+ },
+ tocButtonBottom:{
+  ...ReactReaderStyle.tocButtonBottom,
+  background:'#4D5250',
+  height:'3px'
+ },
+
+    tocArea: {
+      ...ReactReaderStyle.tocArea,
+      left: "none",
+      right: "0px",
+      marginTop: "50px",
+      width: "100vw",
+    },
+    titleArea: {
+      maxWidth: "200px",
+      margin: "auto",
+      textAlign: "center",
+      paddingTop: "15px",
+      fontSize: "14px",
+    },
   };
 
   const darkReaderTheme: IReactReaderStyle = {
@@ -160,6 +195,40 @@ export const App = () => {
     },
     next: {
       display: "none",
+    },
+    containerExpanded: {
+      transform: "translateX(-100vw)",
+    },
+    tocButton: {
+      ...ReactReaderStyle.tocButton,
+      left: "none",
+      right: "0px",
+      position: "fixed",
+    },
+    tocButtonBarTop:{
+      ...ReactReaderStyle.tocButtonBarTop,
+      background:'#4D5250',
+      height:'2px'
+     },
+     tocButtonBottom:{
+      ...ReactReaderStyle.tocButtonBottom,
+      background:'#4D5250',
+      height:'3px'
+     },
+
+    tocArea: {
+      ...ReactReaderStyle.tocArea,
+      left: "none",
+      right: "0px",
+      marginTop: "50px",
+      width: "100vw",
+    },
+    titleArea: {
+      maxWidth: "200px",
+      margin: "auto",
+      textAlign: "center",
+      paddingTop: "15px",
+      fontSize: "14px",
     },
   };
 
@@ -175,8 +244,43 @@ export const App = () => {
     next: {
       display: "none",
     },
+    containerExpanded: {
+      transform: "translateX(-100vw)",
+    },
+    tocButtonBarTop:{
+      ...ReactReaderStyle.tocButtonBarTop,
+      background:'#4D5250',
+      height:'2px'
+     },
+     tocButtonBottom:{
+      ...ReactReaderStyle.tocButtonBottom,
+      background:'#4D5250',
+      height:'3px'
+     },
+    tocButton: {
+      ...ReactReaderStyle.tocButton,
+      left: "none",
+      right: "0px",
+      position: "fixed",
+    },
+
+    tocArea: {
+      ...ReactReaderStyle.tocArea,
+      left: "none",
+      right: "0px",
+      marginTop: "50px",
+      width: "100vw",
+    },
+    titleArea: {
+      maxWidth: "200px",
+      margin: "auto",
+      textAlign: "center",
+      paddingTop: "15px",
+      fontSize: "14px",
+    },
   };
 
+  
   const greenReaderTheme: IReactReaderStyle = {
     ...ReactReaderStyle,
     readerArea: {
@@ -188,6 +292,40 @@ export const App = () => {
     },
     next: {
       display: "none",
+    },
+    tocButtonBarTop:{
+      ...ReactReaderStyle.tocButtonBarTop,
+      background:'#4D5250',
+      height:'2px'
+     },
+     tocButtonBottom:{
+      ...ReactReaderStyle.tocButtonBottom,
+      background:'#4D5250',
+      height:'3px'
+     },
+    containerExpanded: {
+      transform: "translateX(-100vw)",
+    },
+    tocButton: {
+      ...ReactReaderStyle.tocButton,
+      left: "none",
+      right: "0px",
+      position: "fixed",
+    },
+
+    tocArea: {
+      ...ReactReaderStyle.tocArea,
+      left: "none",
+      right: "0px",
+      marginTop: "50px",
+      width: "100vw",
+    },
+    titleArea: {
+      maxWidth: "200px",
+      margin: "auto",
+      textAlign: "center",
+      paddingTop: "15px",
+      fontSize: "14px",
     },
   };
 
@@ -202,6 +340,40 @@ export const App = () => {
     },
     next: {
       display: "none",
+    },
+    tocButtonBarTop:{
+      ...ReactReaderStyle.tocButtonBarTop,
+      background:'#4D5250',
+      height:'2px'
+     },
+     tocButtonBottom:{
+      ...ReactReaderStyle.tocButtonBottom,
+      background:'#4D5250',
+      height:'3px'
+     },
+    containerExpanded: {
+      transform: "translateX(-100vw)",
+    },
+    tocButton: {
+      ...ReactReaderStyle.tocButton,
+      left: "none",
+      right: "0px",
+      position: "fixed",
+    },
+
+    tocArea: {
+      ...ReactReaderStyle.tocArea,
+      left: "none",
+      right: "0px",
+      marginTop: "50px",
+      width: "100vw",
+    },
+    titleArea: {
+      maxWidth: "200px",
+      margin: "auto",
+      textAlign: "center",
+      paddingTop: "15px",
+      fontSize: "14px",
     },
   };
 
@@ -265,11 +437,29 @@ export const App = () => {
           );
         }}
       />
+      <a
+        href="http://back"
+        style={{
+          position: "absolute",
+          top: "10px",
+          left: "0px",
+          zIndex: 99,
+        }}
+      >
+        <img
+          style={{
+            cursor: "pointer",
+          }}
+          src="/back.svg"
+          width="35px"
+          height="35px"
+        />
+      </a>
       <div
         style={{
           position: "absolute",
           top: "15px",
-          right: "10px",
+          right: "40px",
           zIndex: 99,
         }}
       >
@@ -279,6 +469,27 @@ export const App = () => {
             cursor: "pointer",
           }}
           src="/settings.svg"
+          width="25px"
+          height="25px"
+        />
+      </div>
+
+      <div
+        style={{
+          position: "absolute",
+          top: "15px",
+          right: "5px",
+          zIndex: 0.5,
+        }}
+      >
+        <img
+          onClick={() => {
+            rendition.current?.display(location.toString());
+          }}
+          style={{
+            cursor: "pointer",
+          }}
+          src="/close.svg"
           width="25px"
           height="25px"
         />
@@ -434,14 +645,14 @@ export const App = () => {
           >
             <div
               onClick={() => {
-                setFontFamily("'Arvo', serif");
-                localStorage.setItem("fontFamily", "'Arvo', serif");
+                setFontFamily("'Literata', serif");
+                localStorage.setItem("fontFamily", "'Literata', serif");
               }}
               style={{
                 padding: "10px",
                 borderRadius: "8px",
                 border:
-                  fontFamily === "'Arvo', serif"
+                  fontFamily === "'Literata', serif"
                     ? "1px solid #F97010"
                     : "1px solid #dadfdd",
                 width: "20vw",
@@ -474,19 +685,19 @@ export const App = () => {
                 cursor: "pointer",
               }}
             >
-              Playpan
+              Vollkorn
             </div>
             <div
               onClick={() => {
-                setFontFamily("'Playpen Sans', cursive");
-                localStorage.setItem("fontFamily", "'Playpen Sans', cursive");
+                setFontFamily("'Arvo', serif");
+                localStorage.setItem("fontFamily", "'Arvo', serif");
               }}
               style={{
                 background: "#fff",
                 padding: "10px",
                 borderRadius: "8px",
                 border:
-                  fontFamily === "'Playpen Sans', cursive"
+                  fontFamily === "'Arvo', serif"
                     ? "1px solid #F97010"
                     : "1px solid #dadfdd",
                 width: "20vw",
