@@ -95,8 +95,8 @@ export const App = () => {
     const localFont = localStorage.getItem("fontFamily");
     setTimeout(() => {
       if (rendition.current && localFont) {
-        console.log("working", localFont);
         updateFontFamily(rendition.current, localFont || "");
+        rendition.current.display(location.toString())
       }
     }, 500);
   }, [rendition.current]);
