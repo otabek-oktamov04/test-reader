@@ -40,18 +40,22 @@ function updateFontFamily(rendition: Rendition, font: string) {
   switch (font) {
     case "'Arvo', serif": {
       themes.override("font-family", "'Arvo', serif");
+      themes.override("font-style", "italic");
       break;
     }
-    case "'Source Code Pro', monospace": {
-      themes.override("font-family", "'Source Code Pro', monospace");
+    case  "'Playpen Sans', cursive": {
+      themes.override("font-family", "'Playpen Sans', cursive");
+      themes.override("font-style", "normal");
       break;
     }
     case "'Literata', serif": {
       themes.override("font-family", "'Literata', serif");
+      themes.override("font-style", "normal");
       break;
     }
     case "'Onest', sans-serif": {
       themes.override("font-family", "'Onest', sans-serif");
+      themes.override("font-style", "normal");
       break;
     }
   }
@@ -59,7 +63,7 @@ function updateFontFamily(rendition: Rendition, font: string) {
 
 export const App = () => {
   const toc = useRef<NavItem[]>([]);
-  const [page, setPage] = useState("");
+  // const [page, setPage] = useState("");
   const [isOpen, setIsOpen] = useState(false);
   const rendition = useRef<Rendition | undefined>(undefined);
   const [fontSize, setFontSize] = useState(100);
@@ -408,18 +412,18 @@ export const App = () => {
         swipeable={mode === "paginated"}
         location={location}
         tocChanged={(_toc) => (toc.current = _toc)}
-        title={page}
+        // title={page}
         readerStyles={readerTheme()}
         locationChanged={(loc: string) => {
           setLocation(loc);
           if (rendition.current && toc.current) {
-            const { displayed, href } = rendition.current.location.start;
-            const chapter = toc.current.find((item) => item.href === href);
-            setPage(
-              `${chapter ? chapter.label : "n/a"} Bobidagi ${
-                displayed.page
-              } sahifa`
-            );
+            // const { displayed, href } = rendition.current.location.start;
+            // const chapter = toc.current.find((item) => item.href === href);
+            // setPage(
+            //   `${chapter ? chapter.label : "n/a"} Bobidagi ${
+            //     displayed.page
+            //   } sahifa`
+            // );
           }
         }}
         getRendition={(_rendition: Rendition) => {
@@ -665,10 +669,10 @@ export const App = () => {
             </div>
             <div
               onClick={() => {
-                setFontFamily("'Source Code Pro', monospace");
+                setFontFamily( "'Playpen Sans', cursive");
                 localStorage.setItem(
                   "fontFamily",
-                  "'Source Code Pro', monospace"
+                  "'Playpen Sans', cursive"
                 );
               }}
               style={{
@@ -676,7 +680,7 @@ export const App = () => {
                 padding: "10px",
                 borderRadius: "8px",
                 border:
-                  fontFamily === "'Source Code Pro', monospace"
+                  fontFamily ===  "'Playpen Sans', cursive"
                     ? "1px solid #F97010"
                     : "1px solid #dadfdd",
                 width: "20vw",
@@ -685,7 +689,7 @@ export const App = () => {
                 cursor: "pointer",
               }}
             >
-              Vollkorn
+            PlayPan
             </div>
             <div
               onClick={() => {
