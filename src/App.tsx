@@ -669,30 +669,6 @@ export const App = () => {
             </div>
             <div
               onClick={() => {
-                setFontFamily( "'Playpen Sans', cursive");
-                localStorage.setItem(
-                  "fontFamily",
-                  "'Playpen Sans', cursive"
-                );
-              }}
-              style={{
-                background: "#fff",
-                padding: "10px",
-                borderRadius: "8px",
-                border:
-                  fontFamily ===  "'Playpen Sans', cursive"
-                    ? "1px solid #F97010"
-                    : "1px solid #dadfdd",
-                width: "20vw",
-                boxSizing: "border-box",
-                textAlign: "center",
-                cursor: "pointer",
-              }}
-            >
-            PlayPan
-            </div>
-            <div
-              onClick={() => {
                 setFontFamily("'Arvo', serif");
                 localStorage.setItem("fontFamily", "'Arvo', serif");
               }}
@@ -732,6 +708,30 @@ export const App = () => {
               }}
             >
               Avenir
+            </div>
+            <div
+              onClick={() => {
+                setFontFamily( "'Playpen Sans', cursive");
+                localStorage.setItem(
+                  "fontFamily",
+                  "'Playpen Sans', cursive"
+                );
+              }}
+              style={{
+                background: "#fff",
+                padding: "10px",
+                borderRadius: "8px",
+                border:
+                  fontFamily ===  "'Playpen Sans', cursive"
+                    ? "1px solid #F97010"
+                    : "1px solid #dadfdd",
+                width: "20vw",
+                boxSizing: "border-box",
+                textAlign: "center",
+                cursor: "pointer",
+              }}
+            >
+            PlayPan
             </div>
           </div>
         </div>
