@@ -43,7 +43,7 @@ function updateFontFamily(rendition: Rendition, font: string) {
       themes.override("font-style", "italic");
       break;
     }
-    case  "'Playpen Sans', cursive": {
+    case "'Playpen Sans', cursive": {
       themes.override("font-family", "'Playpen Sans', cursive");
       themes.override("font-style", "normal");
       break;
@@ -63,7 +63,7 @@ function updateFontFamily(rendition: Rendition, font: string) {
 
 export const App = () => {
   const toc = useRef<NavItem[]>([]);
-  // const [page, setPage] = useState("");
+  const [page, setPage] = useState("");
   const [isOpen, setIsOpen] = useState(false);
   const rendition = useRef<Rendition | undefined>(undefined);
   const [fontSize, setFontSize] = useState(100);
@@ -75,6 +75,7 @@ export const App = () => {
     font2: false,
   });
   const [theme, setTheme] = useState("light");
+  const [show, setShow] = useState(false);
 
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
@@ -96,7 +97,7 @@ export const App = () => {
     setTimeout(() => {
       if (rendition.current && localFont) {
         updateFontFamily(rendition.current, localFont || "");
-        rendition.current.display(location.toString())
+        rendition.current.display(location.toString());
       }
     }, 500);
   }, [rendition.current]);
@@ -161,16 +162,16 @@ export const App = () => {
       position: "fixed",
       zIndex: 999,
     },
- tocButtonBarTop:{
-  ...ReactReaderStyle.tocButtonBarTop,
-  background:'#4D5250',
-  height:'2px'
- },
- tocButtonBottom:{
-  ...ReactReaderStyle.tocButtonBottom,
-  background:'#4D5250',
-  height:'3px'
- },
+    tocButtonBarTop: {
+      ...ReactReaderStyle.tocButtonBarTop,
+      background: "#4D5250",
+      height: "2px",
+    },
+    tocButtonBottom: {
+      ...ReactReaderStyle.tocButtonBottom,
+      background: "#4D5250",
+      height: "3px",
+    },
 
     tocArea: {
       ...ReactReaderStyle.tocArea,
@@ -209,16 +210,16 @@ export const App = () => {
       right: "0px",
       position: "fixed",
     },
-    tocButtonBarTop:{
+    tocButtonBarTop: {
       ...ReactReaderStyle.tocButtonBarTop,
-      background:'#4D5250',
-      height:'2px'
-     },
-     tocButtonBottom:{
+      background: "#4D5250",
+      height: "2px",
+    },
+    tocButtonBottom: {
       ...ReactReaderStyle.tocButtonBottom,
-      background:'#4D5250',
-      height:'3px'
-     },
+      background: "#4D5250",
+      height: "3px",
+    },
 
     tocArea: {
       ...ReactReaderStyle.tocArea,
@@ -251,16 +252,16 @@ export const App = () => {
     containerExpanded: {
       transform: "translateX(-100vw)",
     },
-    tocButtonBarTop:{
+    tocButtonBarTop: {
       ...ReactReaderStyle.tocButtonBarTop,
-      background:'#4D5250',
-      height:'2px'
-     },
-     tocButtonBottom:{
+      background: "#4D5250",
+      height: "2px",
+    },
+    tocButtonBottom: {
       ...ReactReaderStyle.tocButtonBottom,
-      background:'#4D5250',
-      height:'3px'
-     },
+      background: "#4D5250",
+      height: "3px",
+    },
     tocButton: {
       ...ReactReaderStyle.tocButton,
       left: "none",
@@ -284,7 +285,6 @@ export const App = () => {
     },
   };
 
-  
   const greenReaderTheme: IReactReaderStyle = {
     ...ReactReaderStyle,
     readerArea: {
@@ -297,16 +297,16 @@ export const App = () => {
     next: {
       display: "none",
     },
-    tocButtonBarTop:{
+    tocButtonBarTop: {
       ...ReactReaderStyle.tocButtonBarTop,
-      background:'#4D5250',
-      height:'2px'
-     },
-     tocButtonBottom:{
+      background: "#4D5250",
+      height: "2px",
+    },
+    tocButtonBottom: {
       ...ReactReaderStyle.tocButtonBottom,
-      background:'#4D5250',
-      height:'3px'
-     },
+      background: "#4D5250",
+      height: "3px",
+    },
     containerExpanded: {
       transform: "translateX(-100vw)",
     },
@@ -345,16 +345,16 @@ export const App = () => {
     next: {
       display: "none",
     },
-    tocButtonBarTop:{
+    tocButtonBarTop: {
       ...ReactReaderStyle.tocButtonBarTop,
-      background:'#4D5250',
-      height:'2px'
-     },
-     tocButtonBottom:{
+      background: "#4D5250",
+      height: "2px",
+    },
+    tocButtonBottom: {
       ...ReactReaderStyle.tocButtonBottom,
-      background:'#4D5250',
-      height:'3px'
-     },
+      background: "#4D5250",
+      height: "3px",
+    },
     containerExpanded: {
       transform: "translateX(-100vw)",
     },
@@ -395,6 +395,12 @@ export const App = () => {
     }
   };
 
+  const hideShow = () => {
+    setTimeout(() => {
+      setShow(false);
+    }, 3000);
+  };
+
   return (
     <div
       className="test"
@@ -417,13 +423,15 @@ export const App = () => {
         locationChanged={(loc: string) => {
           setLocation(loc);
           if (rendition.current && toc.current) {
-            // const { displayed, href } = rendition.current.location.start;
-            // const chapter = toc.current.find((item) => item.href === href);
-            // setPage(
-            //   `${chapter ? chapter.label : "n/a"} Bobidagi ${
-            //     displayed.page
-            //   } sahifa`
-            // );
+            const { displayed, href } = rendition.current.location.start;
+            const chapter = toc.current.find((item) => item.href === href);
+            setPage(
+              `${chapter ? chapter.label : "n/a"} Bobidagi ${
+                displayed.page
+              } sahifa`
+            );
+            setShow(true);
+            hideShow();
           }
         }}
         getRendition={(_rendition: Rendition) => {
@@ -497,6 +505,25 @@ export const App = () => {
           width="25px"
           height="25px"
         />
+      </div>
+
+      <div
+        style={{
+          position: "absolute",
+          background: "#f7f7f7",
+          width: "100%",
+          height: "40px",
+          bottom: "0px",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          zIndex: 1,
+          textAlign: "center",
+          transition: "0.5s ease",
+          transform: show ? "translateY(0px)" : "translateY(100px)",
+        }}
+      >
+        <p>{page}</p>
       </div>
 
       <div
@@ -711,18 +738,15 @@ export const App = () => {
             </div>
             <div
               onClick={() => {
-                setFontFamily( "'Playpen Sans', cursive");
-                localStorage.setItem(
-                  "fontFamily",
-                  "'Playpen Sans', cursive"
-                );
+                setFontFamily("'Playpen Sans', cursive");
+                localStorage.setItem("fontFamily", "'Playpen Sans', cursive");
               }}
               style={{
                 background: "#fff",
                 padding: "10px",
                 borderRadius: "8px",
                 border:
-                  fontFamily ===  "'Playpen Sans', cursive"
+                  fontFamily === "'Playpen Sans', cursive"
                     ? "1px solid #F97010"
                     : "1px solid #dadfdd",
                 width: "20vw",
@@ -731,7 +755,7 @@ export const App = () => {
                 cursor: "pointer",
               }}
             >
-            PlayPan
+              PlayPan
             </div>
           </div>
         </div>
