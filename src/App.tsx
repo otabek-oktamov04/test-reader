@@ -41,21 +41,25 @@ function updateFontFamily(rendition: Rendition, font: string) {
     case "'Arvo', serif": {
       themes.override("font-family", "'Arvo', serif");
       themes.override("font-style", "italic");
+      themes.override("font-weight", "500");
       break;
     }
-    case "'Playpen Sans', cursive": {
-      themes.override("font-family", "'Playpen Sans', cursive");
-      themes.override("font-style", "normal");
+    case "'Roboto', sans-serif": {
+      themes.override("font-family", "'Roboto', sans-serif");
+      themes.override("font-style", "italic");
+      themes.override("font-weight", "600");
       break;
     }
     case "'Literata', serif": {
       themes.override("font-family", "'Literata', serif");
       themes.override("font-style", "normal");
+      themes.override("font-weight", "500");
       break;
     }
     case "'Onest', sans-serif": {
       themes.override("font-family", "'Onest', sans-serif");
       themes.override("font-style", "normal");
+      themes.override("font-weight", "500");
       break;
     }
   }
@@ -738,15 +742,15 @@ export const App = () => {
             </div>
             <div
               onClick={() => {
-                setFontFamily("'Playpen Sans', cursive");
-                localStorage.setItem("fontFamily", "'Playpen Sans', cursive");
+                setFontFamily("'Roboto', sans-serif");
+                localStorage.setItem("fontFamily", "'Roboto', sans-serif");
               }}
               style={{
                 background: "#fff",
                 padding: "10px",
                 borderRadius: "8px",
                 border:
-                  fontFamily === "'Playpen Sans', cursive"
+                  fontFamily === "'Roboto', sans-serif"
                     ? "1px solid #F97010"
                     : "1px solid #dadfdd",
                 width: "20vw",
@@ -755,7 +759,7 @@ export const App = () => {
                 cursor: "pointer",
               }}
             >
-              PlayPan
+              Roboto
             </div>
           </div>
         </div>
