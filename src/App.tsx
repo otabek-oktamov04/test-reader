@@ -518,13 +518,12 @@ export const App = () => {
           width: "100%",
           height: "40px",
           bottom: "0px",
-          display: "flex",
+          display: show ? 'flex' : 'none',
           justifyContent: "center",
           alignItems: "center",
           zIndex: 1,
           textAlign: "center",
-          transition: "0.5s ease",
-          transform: show ? "translateY(0px)" : "translateY(100px)",
+          transition: "0.5s ease",     
         }}
       >
         <p>{page}</p>
