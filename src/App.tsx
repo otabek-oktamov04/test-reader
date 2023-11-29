@@ -412,15 +412,15 @@ export const App = () => {
   };
 
 
-  useEffect(() => {
-    const element = document.querySelector('.bookCover');
-    if (element) {
-      element.classList.add('openAnimation');
-      setTimeout(() => {
-        element.classList.remove('openAnimation');
-      }, 2000); // Remove the animation class after 2 seconds
-    }
-  }, [page]);
+  // useEffect(() => {
+  //   const element = document.querySelector('.bookCover');
+  //   if (element) {
+  //     element.classList.add('openAnimation');
+  //     setTimeout(() => {
+  //       element.classList.remove('openAnimation');
+  //     }, 2000); // Remove the animation class after 2 seconds
+  //   }
+  // }, [page]);
 
   return (
     <div
@@ -506,8 +506,8 @@ export const App = () => {
           height="25px"
         />
       </div>
-
-      <div className="bookCover"></div>
+{/* 
+      <div className="bookCover"></div> */}
 
       <div
         style={{
