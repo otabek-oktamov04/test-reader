@@ -3,6 +3,7 @@ import useLocalStorageState from "use-local-storage-state";
 import { useEffect, useRef, useState } from "react";
 import type { Contents, NavItem, Rendition } from "epubjs";
 import { IReactReaderStyle, ReactReader, ReactReaderStyle } from "react-reader";
+import './App.css'
 
 function updateTheme(rendition: Rendition, theme: string) {
   const themes = rendition.themes;
@@ -149,6 +150,7 @@ export const App = () => {
     readerArea: {
       ...ReactReaderStyle.readerArea,
       background: "#fff",
+      transform:'scaleX(1.3)',
     },
     prev: {
       display: "none",
@@ -162,7 +164,7 @@ export const App = () => {
     tocButton: {
       ...ReactReaderStyle.tocButton,
       left: "none",
-      right: "0px",
+      right: "11%",
       position: "fixed",
       zIndex: 999,
     },
@@ -198,6 +200,7 @@ export const App = () => {
     readerArea: {
       ...ReactReaderStyle.readerArea,
       background: "#000",
+      transform:'scaleX(1.3)',
     },
     prev: {
       display: "none",
@@ -246,6 +249,7 @@ export const App = () => {
     readerArea: {
       ...ReactReaderStyle.readerArea,
       background: "#48484a",
+      transform:'scaleX(1.3)',
     },
     prev: {
       display: "none",
@@ -294,6 +298,7 @@ export const App = () => {
     readerArea: {
       ...ReactReaderStyle.readerArea,
       background: "#ceeaba",
+      transform:'scaleX(1.3)',
     },
     prev: {
       display: "none",
@@ -342,6 +347,7 @@ export const App = () => {
     readerArea: {
       ...ReactReaderStyle.readerArea,
       background: "#f8f2e5",
+      transform:'scaleX(1.3)',
     },
     prev: {
       display: "none",
@@ -405,9 +411,20 @@ export const App = () => {
     }, 3000);
   };
 
+
+  useEffect(() => {
+    const element = document.querySelector('.bookCover');
+    if (element) {
+      element.classList.add('openAnimation');
+      setTimeout(() => {
+        element.classList.remove('openAnimation');
+      }, 2000); // Remove the animation class after 2 seconds
+    }
+  }, [page]);
+
   return (
     <div
-      className="test"
+      className="book"
       style={{
         height: "100vh",
         width: "100vw",
@@ -489,6 +506,8 @@ export const App = () => {
           height="25px"
         />
       </div>
+
+      <div className="bookCover"></div>
 
       <div
         style={{

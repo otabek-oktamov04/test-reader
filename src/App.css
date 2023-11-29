@@ -1,0 +1,24 @@
+/* CSS */
+@keyframes openBook {
+   0%{
+    z-index: 99;
+    transform: translateX(0);
+   }
+   100%{
+    z-index: -2;
+    transform: translateX(-100%);
+   }
+  }
+
+  .openAnimation {
+    animation: openBook 1s forwards;
+  }
+  
+  .bookCover {
+    position: absolute;
+    background: white;
+    width: 100vw;
+    height: 94vh;
+    top: 6%;
+    z-index: -2;
+  }
