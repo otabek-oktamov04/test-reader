@@ -164,7 +164,7 @@ export const App = () => {
     tocButton: {
       ...ReactReaderStyle.tocButton,
       left: "none",
-      right: "11%",
+      right: "12%",
       position: "fixed",
       zIndex: 999,
     },
@@ -186,13 +186,7 @@ export const App = () => {
       marginTop: "50px",
       width: "100vw",
     },
-    titleArea: {
-      maxWidth: "200px",
-      margin: "auto",
-      textAlign: "center",
-      paddingTop: "15px",
-      fontSize: "14px",
-    },
+
   };
 
   const darkReaderTheme: IReactReaderStyle = {
@@ -214,7 +208,7 @@ export const App = () => {
     tocButton: {
       ...ReactReaderStyle.tocButton,
       left: "none",
-      right: "0px",
+      right: "12%",
       position: "fixed",
     },
     tocButtonBarTop: {
@@ -235,13 +229,7 @@ export const App = () => {
       marginTop: "50px",
       width: "100vw",
     },
-    titleArea: {
-      maxWidth: "200px",
-      margin: "auto",
-      textAlign: "center",
-      paddingTop: "15px",
-      fontSize: "14px",
-    },
+
   };
 
   const midDarkReaderTheme: IReactReaderStyle = {
@@ -273,7 +261,7 @@ export const App = () => {
     tocButton: {
       ...ReactReaderStyle.tocButton,
       left: "none",
-      right: "0px",
+      right: "12%",
       position: "fixed",
     },
 
@@ -284,13 +272,7 @@ export const App = () => {
       marginTop: "50px",
       width: "100vw",
     },
-    titleArea: {
-      maxWidth: "200px",
-      margin: "auto",
-      textAlign: "center",
-      paddingTop: "15px",
-      fontSize: "14px",
-    },
+
   };
 
   const greenReaderTheme: IReactReaderStyle = {
@@ -322,7 +304,7 @@ export const App = () => {
     tocButton: {
       ...ReactReaderStyle.tocButton,
       left: "none",
-      right: "0px",
+      right: "12%",
       position: "fixed",
     },
 
@@ -333,13 +315,7 @@ export const App = () => {
       marginTop: "50px",
       width: "100vw",
     },
-    titleArea: {
-      maxWidth: "200px",
-      margin: "auto",
-      textAlign: "center",
-      paddingTop: "15px",
-      fontSize: "14px",
-    },
+
   };
 
   const pinkReaderTheme: IReactReaderStyle = {
@@ -371,7 +347,7 @@ export const App = () => {
     tocButton: {
       ...ReactReaderStyle.tocButton,
       left: "none",
-      right: "0px",
+      right: "12%",
       position: "fixed",
     },
 
@@ -382,13 +358,7 @@ export const App = () => {
       marginTop: "50px",
       width: "100vw",
     },
-    titleArea: {
-      maxWidth: "200px",
-      margin: "auto",
-      textAlign: "center",
-      paddingTop: "15px",
-      fontSize: "14px",
-    },
+
   };
 
   const readerTheme = () => {
@@ -439,7 +409,7 @@ export const App = () => {
         swipeable={mode === "paginated"}
         location={location}
         tocChanged={(_toc) => (toc.current = _toc)}
-        // title={page}
+        // title='Yoki - Ebook Reader'
         readerStyles={readerTheme()}
         locationChanged={(loc: string) => {
           setLocation(loc);
@@ -492,7 +462,7 @@ export const App = () => {
         style={{
           position: "absolute",
           top: "15px",
-          right: "40px",
+          right: "44px",
           zIndex: 99,
         }}
       >
@@ -735,7 +705,7 @@ export const App = () => {
                 cursor: "pointer",
               }}
             >
-              PT Serif
+            Serif
             </div>
             <div
               onClick={() => {
