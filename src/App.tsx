@@ -81,6 +81,7 @@ export const App = () => {
   });
   const [theme, setTheme] = useState("light");
   const [show, setShow] = useState(false);
+  const [chapterChange, setChapterChange] = useState("");
 
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
@@ -106,6 +107,50 @@ export const App = () => {
       }
     }, 500);
   }, [rendition.current]);
+
+  const createStyleString = () => {
+    // Define your dynamic styles here
+    return `
+      <style>
+        /* Define styles for <p> elements */
+        p {
+          word-wrap: break-word;
+          overflow-wrap: break-word;
+              text-align: left;
+              -ms-hyphens: auto;
+              -moz-hyphens: auto;
+              -webkit-hyphens: auto;
+              hyphens: auto !important;
+            text-align:start !important;
+            
+   
+       
+          /* Add more styles here */
+        }
+      </style>
+    `;
+  };
+
+  useEffect(() => {
+    const doc = document.querySelectorAll("iframe");
+    doc.forEach((item) => {
+      if (item.srcdoc) {
+        const srcDoc = item.srcdoc;
+        const htmlString = `
+        <html lang="en">
+          <head>
+            ${createStyleString()}
+          </head>
+          <body>
+          ${srcDoc}
+          </body>
+        </html>
+      `;
+
+        item.srcdoc = htmlString;
+      }
+    });
+  }, [chapterChange]);
 
   useEffect(() => {
     const localMode = localStorage.getItem("mode");
@@ -150,7 +195,7 @@ export const App = () => {
     readerArea: {
       ...ReactReaderStyle.readerArea,
       background: "#fff",
-      transform: "scaleX(1.2)",
+      transform: "scaleX(1.3)",
     },
     prev: {
       display: "none",
@@ -193,7 +238,7 @@ export const App = () => {
     readerArea: {
       ...ReactReaderStyle.readerArea,
       background: "#000",
-      transform: "scaleX(1.2)",
+      transform: "scaleX(1.3)",
     },
     prev: {
       display: "none",
@@ -235,7 +280,7 @@ export const App = () => {
     readerArea: {
       ...ReactReaderStyle.readerArea,
       background: "#48484a",
-      transform: "scaleX(1.2)",
+      transform: "scaleX(1.3)",
     },
     prev: {
       display: "none",
@@ -277,7 +322,7 @@ export const App = () => {
     readerArea: {
       ...ReactReaderStyle.readerArea,
       background: "#ceeaba",
-      transform: "scaleX(1.2)",
+      transform: "scaleX(1.3)",
     },
     prev: {
       display: "none",
@@ -319,7 +364,7 @@ export const App = () => {
     readerArea: {
       ...ReactReaderStyle.readerArea,
       background: "#f8f2e5",
-      transform: "scaleX(1.2)",
+      transform: "scaleX(1.3)",
     },
     prev: {
       display: "none",
@@ -410,6 +455,10 @@ export const App = () => {
           if (rendition.current && toc.current) {
             const { displayed, href } = rendition.current.location.start;
             const chapter = toc.current.find((item) => item.href === href);
+            if (chapter?.id) {
+              setChapterChange(chapter.id);
+            }
+
             setPage(
               `${chapter ? chapter.label : "n/a"} Bobidagi ${
                 displayed.page
@@ -470,8 +519,8 @@ export const App = () => {
           height="25px"
         />
       </div>
-
-      {/* <div className="bookCover"></div> */}
+      {/* 
+      <div className="bookCover"></div> */}
 
       <div
         style={{
