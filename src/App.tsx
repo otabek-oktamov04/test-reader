@@ -121,7 +121,6 @@ export const App = () => {
               -moz-hyphens: auto;
               -webkit-hyphens: auto;
               hyphens: auto !important;
-            text-align:start !important;
             
    
        
