@@ -3,7 +3,7 @@ import useLocalStorageState from "use-local-storage-state";
 import { useEffect, useRef, useState } from "react";
 import type { Contents, NavItem, Rendition } from "epubjs";
 import { IReactReaderStyle, ReactReader, ReactReaderStyle } from "react-reader";
-import './App.css'
+import "./App.css";
 
 function updateTheme(rendition: Rendition, theme: string) {
   const themes = rendition.themes;
@@ -150,7 +150,7 @@ export const App = () => {
     readerArea: {
       ...ReactReaderStyle.readerArea,
       background: "#fff",
-      transform:'scaleX(1.3)',
+      transform: "scaleX(1.2)",
     },
     prev: {
       display: "none",
@@ -186,7 +186,6 @@ export const App = () => {
       marginTop: "50px",
       width: "100vw",
     },
-
   };
 
   const darkReaderTheme: IReactReaderStyle = {
@@ -194,7 +193,7 @@ export const App = () => {
     readerArea: {
       ...ReactReaderStyle.readerArea,
       background: "#000",
-      transform:'scaleX(1.3)',
+      transform: "scaleX(1.2)",
     },
     prev: {
       display: "none",
@@ -229,7 +228,6 @@ export const App = () => {
       marginTop: "50px",
       width: "100vw",
     },
-
   };
 
   const midDarkReaderTheme: IReactReaderStyle = {
@@ -237,7 +235,7 @@ export const App = () => {
     readerArea: {
       ...ReactReaderStyle.readerArea,
       background: "#48484a",
-      transform:'scaleX(1.3)',
+      transform: "scaleX(1.2)",
     },
     prev: {
       display: "none",
@@ -272,7 +270,6 @@ export const App = () => {
       marginTop: "50px",
       width: "100vw",
     },
-
   };
 
   const greenReaderTheme: IReactReaderStyle = {
@@ -280,7 +277,7 @@ export const App = () => {
     readerArea: {
       ...ReactReaderStyle.readerArea,
       background: "#ceeaba",
-      transform:'scaleX(1.3)',
+      transform: "scaleX(1.2)",
     },
     prev: {
       display: "none",
@@ -315,7 +312,6 @@ export const App = () => {
       marginTop: "50px",
       width: "100vw",
     },
-
   };
 
   const pinkReaderTheme: IReactReaderStyle = {
@@ -323,7 +319,7 @@ export const App = () => {
     readerArea: {
       ...ReactReaderStyle.readerArea,
       background: "#f8f2e5",
-      transform:'scaleX(1.3)',
+      transform: "scaleX(1.2)",
     },
     prev: {
       display: "none",
@@ -358,7 +354,6 @@ export const App = () => {
       marginTop: "50px",
       width: "100vw",
     },
-
   };
 
   const readerTheme = () => {
@@ -381,13 +376,12 @@ export const App = () => {
     }, 3000);
   };
 
-
   // useEffect(() => {
-  //   const element = document.querySelector('.bookCover');
+  //   const element = document.querySelector(".bookCover");
   //   if (element) {
-  //     element.classList.add('openAnimation');
+  //     element.classList.add("openAnimation");
   //     setTimeout(() => {
-  //       element.classList.remove('openAnimation');
+  //       element.classList.remove("openAnimation");
   //     }, 2000); // Remove the animation class after 2 seconds
   //   }
   // }, [page]);
@@ -476,8 +470,8 @@ export const App = () => {
           height="25px"
         />
       </div>
-{/* 
-      <div className="bookCover"></div> */}
+
+      {/* <div className="bookCover"></div> */}
 
       <div
         style={{
@@ -507,12 +501,12 @@ export const App = () => {
           width: "100%",
           height: "40px",
           bottom: "0px",
-          display: show ? 'flex' : 'none',
+          display: show ? "flex" : "none",
           justifyContent: "center",
           alignItems: "center",
           zIndex: 1,
           textAlign: "center",
-          transition: "0.5s ease",     
+          transition: "0.5s ease",
         }}
       >
         <p>{page}</p>
@@ -705,7 +699,7 @@ export const App = () => {
                 cursor: "pointer",
               }}
             >
-            Serif
+              Serif
             </div>
             <div
               onClick={() => {
