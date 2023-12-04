@@ -3,7 +3,7 @@ import useLocalStorageState from "use-local-storage-state";
 import { useEffect, useRef, useState } from "react";
 import type { Contents, NavItem, Rendition } from "epubjs";
 import { IReactReaderStyle, ReactReader, ReactReaderStyle } from "react-reader";
-import './App.css'
+import "./App.css";
 
 function updateTheme(rendition: Rendition, theme: string) {
   const themes = rendition.themes;
@@ -81,6 +81,7 @@ export const App = () => {
   });
   const [theme, setTheme] = useState("light");
   const [show, setShow] = useState(false);
+  const [chapterChange, setChapterChange] = useState("");
 
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
@@ -106,6 +107,52 @@ export const App = () => {
       }
     }, 500);
   }, [rendition.current]);
+
+  const createStyleString = () => {
+    // Define your dynamic styles here
+    return `
+      <style>
+        /* Define styles for <p> elements */
+        p {
+          word-wrap: break-word;
+          overflow-wrap: break-word;
+              text-align: left;
+              -ms-hyphens: auto;
+              -moz-hyphens: auto;
+              -webkit-hyphens: auto;
+              hyphens: auto !important;
+            text-align:start !important;
+            
+   
+       
+          /* Add more styles here */
+        }
+      </style>
+    `;
+  };
+
+  useEffect(() => {
+  
+      const doc = document.querySelectorAll("iframe");
+      doc.forEach((item) => {
+        if (item.srcdoc) {
+          const srcDoc = item.srcdoc;
+          const htmlString = `
+         <html lang="en">
+           <head>
+             ${createStyleString()}
+           </head>
+           <body>
+             ${srcDoc}
+           </body>
+         </html>
+       `;
+
+          item.srcdoc = htmlString;
+        }
+      });
+
+  }, [chapterChange]);
 
   useEffect(() => {
     const localMode = localStorage.getItem("mode");
@@ -150,7 +197,7 @@ export const App = () => {
     readerArea: {
       ...ReactReaderStyle.readerArea,
       background: "#fff",
-      transform:'scaleX(1.3)',
+      transform: "scaleX(1.3)",
     },
     prev: {
       display: "none",
@@ -186,7 +233,6 @@ export const App = () => {
       marginTop: "50px",
       width: "100vw",
     },
-
   };
 
   const darkReaderTheme: IReactReaderStyle = {
@@ -194,7 +240,7 @@ export const App = () => {
     readerArea: {
       ...ReactReaderStyle.readerArea,
       background: "#000",
-      transform:'scaleX(1.3)',
+      transform: "scaleX(1.3)",
     },
     prev: {
       display: "none",
@@ -229,7 +275,6 @@ export const App = () => {
       marginTop: "50px",
       width: "100vw",
     },
-
   };
 
   const midDarkReaderTheme: IReactReaderStyle = {
@@ -237,7 +282,7 @@ export const App = () => {
     readerArea: {
       ...ReactReaderStyle.readerArea,
       background: "#48484a",
-      transform:'scaleX(1.3)',
+      transform: "scaleX(1.3)",
     },
     prev: {
       display: "none",
@@ -272,7 +317,6 @@ export const App = () => {
       marginTop: "50px",
       width: "100vw",
     },
-
   };
 
   const greenReaderTheme: IReactReaderStyle = {
@@ -280,7 +324,7 @@ export const App = () => {
     readerArea: {
       ...ReactReaderStyle.readerArea,
       background: "#ceeaba",
-      transform:'scaleX(1.3)',
+      transform: "scaleX(1.3)",
     },
     prev: {
       display: "none",
@@ -315,7 +359,6 @@ export const App = () => {
       marginTop: "50px",
       width: "100vw",
     },
-
   };
 
   const pinkReaderTheme: IReactReaderStyle = {
@@ -323,7 +366,7 @@ export const App = () => {
     readerArea: {
       ...ReactReaderStyle.readerArea,
       background: "#f8f2e5",
-      transform:'scaleX(1.3)',
+      transform: "scaleX(1.3)",
     },
     prev: {
       display: "none",
@@ -358,7 +401,6 @@ export const App = () => {
       marginTop: "50px",
       width: "100vw",
     },
-
   };
 
   const readerTheme = () => {
@@ -380,7 +422,6 @@ export const App = () => {
       setShow(false);
     }, 3000);
   };
-
 
   // useEffect(() => {
   //   const element = document.querySelector('.bookCover');
@@ -416,6 +457,10 @@ export const App = () => {
           if (rendition.current && toc.current) {
             const { displayed, href } = rendition.current.location.start;
             const chapter = toc.current.find((item) => item.href === href);
+            if (chapter?.id) {
+              setChapterChange(chapter.id);
+            }
+
             setPage(
               `${chapter ? chapter.label : "n/a"} Bobidagi ${
                 displayed.page
@@ -476,7 +521,7 @@ export const App = () => {
           height="25px"
         />
       </div>
-{/* 
+      {/* 
       <div className="bookCover"></div> */}
 
       <div
@@ -507,12 +552,12 @@ export const App = () => {
           width: "100%",
           height: "40px",
           bottom: "0px",
-          display: show ? 'flex' : 'none',
+          display: show ? "flex" : "none",
           justifyContent: "center",
           alignItems: "center",
           zIndex: 1,
           textAlign: "center",
-          transition: "0.5s ease",     
+          transition: "0.5s ease",
         }}
       >
         <p>{page}</p>
@@ -705,7 +750,7 @@ export const App = () => {
                 cursor: "pointer",
               }}
             >
-            Serif
+              Serif
             </div>
             <div
               onClick={() => {
