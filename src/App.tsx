@@ -115,24 +115,24 @@ export const App = () => {
         const srcDoc = item.srcdoc;
         const parser = new DOMParser();
         const iframeDoc = parser.parseFromString(srcDoc, "text/html");
-  
+
         // Find all <p> elements and set lang='eng' and styles
         const paragraphs = iframeDoc.querySelectorAll("p");
         paragraphs.forEach((paragraph) => {
-          paragraph.setAttribute("lang", "en-us");
+          paragraph.setAttribute("lang", "tk-TM");
           paragraph.style.hyphens = "auto";
         });
-  
+
         // Convert the modified document back to string
-        const modifiedHtmlString = new XMLSerializer().serializeToString(iframeDoc);
-  
+        const modifiedHtmlString = new XMLSerializer().serializeToString(
+          iframeDoc
+        );
+
         // Update iframe srcdoc with modified content
         item.srcdoc = modifiedHtmlString;
       }
     });
   }, [chapterChange]);
-  
-  
 
   useEffect(() => {
     const localMode = localStorage.getItem("mode");
