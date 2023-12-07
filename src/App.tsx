@@ -108,51 +108,31 @@ export const App = () => {
     }, 500);
   }, [rendition.current]);
 
-  const createStyleString = () => {
-    // Define your dynamic styles here
-    return `
-      <style>
-        /* Define styles for <p> elements */
-        p {
-          word-wrap: break-word;
-          overflow-wrap: break-word;
-              text-align: left;
-              -ms-hyphens: auto;
-              -moz-hyphens: auto;
-              -webkit-hyphens: auto;
-              hyphens: auto !important;
-            text-align:start !important;
-            
-   
-       
-          /* Add more styles here */
-        }
-      </style>
-    `;
-  };
-
   useEffect(() => {
+    const doc = document.querySelectorAll("iframe");
+    doc.forEach((item) => {
+      if (item.srcdoc) {
+        const srcDoc = item.srcdoc;
+        const parser = new DOMParser();
+        const iframeDoc = parser.parseFromString(srcDoc, "text/html");
   
-      const doc = document.querySelectorAll("iframe");
-      doc.forEach((item) => {
-        if (item.srcdoc) {
-          const srcDoc = item.srcdoc;
-          const htmlString = `
-         <html lang="en">
-           <head>
-             ${createStyleString()}
-           </head>
-           <body>
-             ${srcDoc}
-           </body>
-         </html>
-       `;
-
-          item.srcdoc = htmlString;
-        }
-      });
-
+        // Find all <p> elements and set lang='eng' and styles
+        const paragraphs = iframeDoc.querySelectorAll("p");
+        paragraphs.forEach((paragraph) => {
+          paragraph.setAttribute("lang", "en-us");
+          paragraph.style.hyphens = "auto";
+        });
+  
+        // Convert the modified document back to string
+        const modifiedHtmlString = new XMLSerializer().serializeToString(iframeDoc);
+  
+        // Update iframe srcdoc with modified content
+        item.srcdoc = modifiedHtmlString;
+      }
+    });
   }, [chapterChange]);
+  
+  
 
   useEffect(() => {
     const localMode = localStorage.getItem("mode");
