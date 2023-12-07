@@ -404,11 +404,11 @@ export const App = () => {
   };
 
   // useEffect(() => {
-  //   const element = document.querySelector('.bookCover');
+  //   const element = document.querySelector(".bookCover");
   //   if (element) {
-  //     element.classList.add('openAnimation');
+  //     element.classList.add("openAnimation");
   //     setTimeout(() => {
-  //       element.classList.remove('openAnimation');
+  //       element.classList.remove("openAnimation");
   //     }, 2000); // Remove the animation class after 2 seconds
   //   }
   // }, [page]);
