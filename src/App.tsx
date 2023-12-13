@@ -118,9 +118,15 @@ export const App = () => {
 
         // Find all <p> elements and set lang='eng' and styles
         const paragraphs = iframeDoc.querySelectorAll("p");
+
         paragraphs.forEach((paragraph) => {
-          paragraph.setAttribute("lang", "tk-TM");
+          paragraph.className = "";
+          paragraph.setAttribute("lang", "tk-TK");
           paragraph.style.hyphens = "auto";
+          paragraph.style.hyphenateCharacter = "/2010";
+          paragraph.style.letterSpacing = "-2px";
+          paragraph.style.textAlign = "justify";
+          paragraph.style.lineHeight = "1.5";
         });
 
         // Convert the modified document back to string
@@ -430,7 +436,7 @@ export const App = () => {
         swipeable={mode === "paginated"}
         location={location}
         tocChanged={(_toc) => (toc.current = _toc)}
-        // title='Yoki - Ebook Reader'
+        // title="Yoki - Ebook Reader"
         readerStyles={readerTheme()}
         locationChanged={(loc: string) => {
           setLocation(loc);
