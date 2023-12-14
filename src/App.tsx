@@ -82,6 +82,7 @@ export const App = () => {
   const [theme, setTheme] = useState("light");
   const [show, setShow] = useState(false);
   const [chapterChange, setChapterChange] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
@@ -109,7 +110,9 @@ export const App = () => {
   }, [rendition.current]);
 
   useEffect(() => {
+    setIsLoading(true);
     const doc = document.querySelectorAll("iframe");
+
     doc.forEach((item) => {
       if (item.srcdoc) {
         const srcDoc = item.srcdoc;
@@ -138,6 +141,8 @@ export const App = () => {
         item.srcdoc = modifiedHtmlString;
       }
     });
+
+    setIsLoading(false);
   }, [chapterChange]);
 
   useEffect(() => {
@@ -471,6 +476,21 @@ export const App = () => {
           );
         }}
       />
+      {isLoading && (
+        <div
+          style={{
+            position: "absolute",
+            zIndex: 99999,
+            width: "100vw",
+            height: "100vh",
+            background: "red",
+            top: "0",
+            textAlign: "center",
+          }}
+        >
+          <p>Loading...</p>
+        </div>
+      )}
       <a
         href="http://back"
         style={{
