@@ -1,5 +1,3 @@
-import useLocalStorageState from "use-local-storage-state";
-
 import { useEffect, useRef, useState } from "react";
 import type { Contents, NavItem, Rendition } from "epubjs";
 import { IReactReaderStyle, ReactReader, ReactReaderStyle } from "react-reader";
@@ -82,7 +80,7 @@ export const App = () => {
   const [theme, setTheme] = useState("light");
   const [show, setShow] = useState(false);
   const [chapterChange, setChapterChange] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
@@ -92,57 +90,45 @@ export const App = () => {
     }
   }, []);
 
-  const [location, setLocation] = useLocalStorageState<string | number>(
-    "persist-location",
-    {
-      defaultValue: 0,
-    }
-  );
-
   useEffect(() => {
     const localFont = localStorage.getItem("fontFamily");
     setTimeout(() => {
       if (rendition.current && localFont) {
         updateFontFamily(rendition.current, localFont || "");
-        rendition.current.display(location.toString());
+        rendition.current.display(localStorage.getItem(epubUrl) || "");
       }
     }, 500);
   }, [rendition.current]);
 
   useEffect(() => {
     setIsLoading(true);
-    const doc = document.querySelectorAll("iframe");
+    setTimeout(() => {
+      const doc = document.querySelectorAll("iframe");
+      doc.forEach((item) => {
+        if (item.srcdoc) {
+          const srcDoc = item.srcdoc;
+          const parser = new DOMParser();
+          const iframeDoc = parser.parseFromString(srcDoc, "text/html");
 
-    doc.forEach((item) => {
-      if (item.srcdoc) {
-        const srcDoc = item.srcdoc;
-        const parser = new DOMParser();
-        const iframeDoc = parser.parseFromString(srcDoc, "text/html");
+          // Find all <p> elements and set lang='eng' and styles
+          const paragraphs = iframeDoc.querySelectorAll("p");
 
-        // Find all <p> elements and set lang='eng' and styles
-        const paragraphs = iframeDoc.querySelectorAll("p");
+          paragraphs.forEach((paragraph) => {
+            paragraph.setAttribute("lang", "tk-TK");
+            paragraph.style.hyphens = "auto";
+          });
 
-        paragraphs.forEach((paragraph) => {
-          paragraph.className = "";
-          paragraph.setAttribute("lang", "tk-TK");
-          paragraph.style.hyphens = "auto";
-          paragraph.style.hyphenateCharacter = "/2010";
-          paragraph.style.letterSpacing = "-2px";
-          paragraph.style.textAlign = "justify";
-          paragraph.style.lineHeight = "1.5";
-        });
+          // Convert the modified document back to string
+          const modifiedHtmlString = new XMLSerializer().serializeToString(
+            iframeDoc
+          );
 
-        // Convert the modified document back to string
-        const modifiedHtmlString = new XMLSerializer().serializeToString(
-          iframeDoc
-        );
-
-        // Update iframe srcdoc with modified content
-        item.srcdoc = modifiedHtmlString;
-      }
-    });
-
-    setIsLoading(false);
+          // Update iframe srcdoc with modified content
+          item.srcdoc = modifiedHtmlString;
+        }
+      });
+      setIsLoading(false);
+    }, 1000);
   }, [chapterChange]);
 
   useEffect(() => {
@@ -182,7 +168,6 @@ export const App = () => {
   useEffect(() => {
     rendition.current?.themes.fontSize(`${fontSize}%`);
   }, [fontSize]);
-
   const lightReaderTheme: IReactReaderStyle = {
     ...ReactReaderStyle,
     readerArea: {
@@ -414,16 +399,6 @@ export const App = () => {
     }, 3000);
   };
 
-  // useEffect(() => {
-  //   const element = document.querySelector(".bookCover");
-  //   if (element) {
-  //     element.classList.add("openAnimation");
-  //     setTimeout(() => {
-  //       element.classList.remove("openAnimation");
-  //     }, 2000); // Remove the animation class after 2 seconds
-  //   }
-  // }, [page]);
-
   return (
     <div
       className="book"
@@ -439,12 +414,12 @@ export const App = () => {
           manager: "continuous",
         }}
         swipeable={mode === "paginated"}
-        location={location}
+        location={localStorage.getItem(epubUrl)}
         tocChanged={(_toc) => (toc.current = _toc)}
         // title="Yoki - Ebook Reader"
         readerStyles={readerTheme()}
         locationChanged={(loc: string) => {
-          setLocation(loc);
+          localStorage.setItem(epubUrl, loc);
           if (rendition.current && toc.current) {
             const { displayed, href } = rendition.current.location.start;
             const chapter = toc.current.find((item) => item.href === href);
@@ -483,9 +458,12 @@ export const App = () => {
             zIndex: 99999,
             width: "100vw",
             height: "100vh",
-            background: "red",
+            background: "white",
             top: "0",
             textAlign: "center",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
           }}
         >
           <p>Loading...</p>
@@ -527,9 +505,6 @@ export const App = () => {
           height="25px"
         />
       </div>
-      {/* 
-      <div className="bookCover"></div> */}
-
       <div
         style={{
           position: "absolute",
