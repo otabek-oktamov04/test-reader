@@ -114,8 +114,10 @@ export const App = () => {
           const paragraphs = iframeDoc.querySelectorAll("p");
 
           paragraphs.forEach((paragraph) => {
+            paragraph.className = "";
             paragraph.setAttribute("lang", "tk-TK");
             paragraph.style.hyphens = "auto";
+            paragraph.style.textAlign = "justify";
           });
 
           // Convert the modified document back to string
