@@ -118,6 +118,7 @@ export const App = () => {
             paragraph.setAttribute("lang", "tk-TK");
             paragraph.style.hyphens = "auto";
             paragraph.style.textAlign = "justify";
+            paragraph.style.lineHeight = "25px";
           });
 
           // Convert the modified document back to string
@@ -176,6 +177,7 @@ export const App = () => {
       ...ReactReaderStyle.readerArea,
       background: "#fff",
       transform: "scaleX(1.3)",
+      lineHeight: "1.30",
     },
     prev: {
       display: "none",
@@ -219,6 +221,7 @@ export const App = () => {
       ...ReactReaderStyle.readerArea,
       background: "#000",
       transform: "scaleX(1.3)",
+      lineHeight: "1.30",
     },
     prev: {
       display: "none",
@@ -261,6 +264,7 @@ export const App = () => {
       ...ReactReaderStyle.readerArea,
       background: "#48484a",
       transform: "scaleX(1.3)",
+      lineHeight: "1.30",
     },
     prev: {
       display: "none",
@@ -303,6 +307,7 @@ export const App = () => {
       ...ReactReaderStyle.readerArea,
       background: "#ceeaba",
       transform: "scaleX(1.3)",
+      lineHeight: "1.30",
     },
     prev: {
       display: "none",
@@ -345,6 +350,7 @@ export const App = () => {
       ...ReactReaderStyle.readerArea,
       background: "#f8f2e5",
       transform: "scaleX(1.3)",
+      lineHeight: "1.30",
     },
     prev: {
       display: "none",
