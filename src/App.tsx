@@ -191,7 +191,7 @@ export const App = () => {
     tocButton: {
       ...ReactReaderStyle.tocButton,
       left: "none",
-      right: "12%",
+      right: "20%",
       position: "fixed",
       zIndex: 999,
     },
