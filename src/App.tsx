@@ -39,14 +39,14 @@ function updateFontFamily(rendition: Rendition, font: string) {
   switch (font) {
     case "'Arvo', serif": {
       themes.override("font-family", "'Arvo', serif");
-      themes.override("font-style", "italic");
+      themes.override("font-style", "normal");
       themes.override("font-weight", "500");
       break;
     }
     case "'Roboto', sans-serif": {
       themes.override("font-family", "'Roboto', sans-serif");
-      themes.override("font-style", "italic");
-      themes.override("font-weight", "600");
+      themes.override("font-style", "normal");
+      themes.override("font-weight", "500");
       break;
     }
     case "'Literata', serif": {
@@ -115,10 +115,10 @@ export const App = () => {
 
           paragraphs.forEach((paragraph) => {
             paragraph.className = "";
-            paragraph.setAttribute("lang", "tk-TK");
+            paragraph.setAttribute("lang", "de-1996");
             paragraph.style.hyphens = "auto";
             paragraph.style.textAlign = "justify";
-            paragraph.style.lineHeight = "25px";
+            paragraph.style.lineHeight = "30px";
           });
 
           // Convert the modified document back to string
