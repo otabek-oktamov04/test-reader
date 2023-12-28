@@ -39,25 +39,25 @@ function updateFontFamily(rendition: Rendition, font: string) {
   switch (font) {
     case "'Arvo', serif": {
       themes.override("font-family", "'Arvo', serif");
-      themes.override("font-style", "italic");
+      // themes.override("font-style", "italic");
       themes.override("font-weight", "500");
       break;
     }
     case "'Roboto', sans-serif": {
       themes.override("font-family", "'Roboto', sans-serif");
-      themes.override("font-style", "italic");
-      themes.override("font-weight", "500");
+      // themes.override("font-style", "italic");
+      themes.override("font-weight", "400");
       break;
     }
     case "'Literata', serif": {
       themes.override("font-family", "'Literata', serif");
-      themes.override("font-style", "normal");
-      themes.override("font-weight", "500");
+      // themes.override("font-style", "normal");
+      themes.override("font-weight", "600");
       break;
     }
     case "'Onest', sans-serif": {
       themes.override("font-family", "'Onest', sans-serif");
-      themes.override("font-style", "normal");
+      // themes.override("font-style", "normal");
       themes.override("font-weight", "500");
       break;
     }
@@ -119,6 +119,7 @@ export const App = () => {
             paragraph.style.hyphens = "auto";
             paragraph.style.textAlign = "justify";
             paragraph.style.lineHeight = "25px";
+            // paragraph.style.inset = "40px 15px 5px";
           });
 
           // Convert the modified document back to string
@@ -176,7 +177,7 @@ export const App = () => {
     readerArea: {
       ...ReactReaderStyle.readerArea,
       background: "#fff",
-      // transform: "scaleX(1.1)",
+      transform: "scaleX(1.2)",
       lineHeight: "1.30",
     },
     prev: {
@@ -191,7 +192,7 @@ export const App = () => {
     tocButton: {
       ...ReactReaderStyle.tocButton,
       left: "none",
-      right: "20%",
+      right: "12%",
       position: "fixed",
       zIndex: 999,
     },
@@ -220,7 +221,9 @@ export const App = () => {
     readerArea: {
       ...ReactReaderStyle.readerArea,
       background: "#000",
-      // transform: "scaleX(1.1)",
+      transform: "scaleX(1.2)",
+      // position: "absolute",
+      // inset: "40px 5px 15px !important",
       lineHeight: "1.30",
     },
     prev: {
@@ -263,7 +266,7 @@ export const App = () => {
     readerArea: {
       ...ReactReaderStyle.readerArea,
       background: "#48484a",
-      // transform: "scaleX(1.1)",
+      transform: "scaleX(1.2)",
       lineHeight: "1.30",
     },
     prev: {
@@ -306,7 +309,7 @@ export const App = () => {
     readerArea: {
       ...ReactReaderStyle.readerArea,
       background: "#ceeaba",
-      // transform: "scaleX(1.1)",
+      transform: "scaleX(1.2)",
       lineHeight: "1.30",
     },
     prev: {
@@ -349,7 +352,7 @@ export const App = () => {
     readerArea: {
       ...ReactReaderStyle.readerArea,
       background: "#f8f2e5",
-      // transform: "scaleX(1.1)",
+      transform: "scaleX(1.2)",
       lineHeight: "1.30",
     },
     prev: {
