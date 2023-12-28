@@ -177,7 +177,7 @@ export const App = () => {
     readerArea: {
       ...ReactReaderStyle.readerArea,
       background: "#fff",
-      transform: "scaleX(1.2)",
+      transform: "scaleX(1.15)",
       lineHeight: "1.30",
     },
     prev: {
@@ -192,7 +192,7 @@ export const App = () => {
     tocButton: {
       ...ReactReaderStyle.tocButton,
       left: "none",
-      right: "12%",
+      right: "9%",
       position: "fixed",
       zIndex: 999,
     },
@@ -221,7 +221,7 @@ export const App = () => {
     readerArea: {
       ...ReactReaderStyle.readerArea,
       background: "#000",
-      transform: "scaleX(1.2)",
+      transform: "scaleX(1.15)",
       // position: "absolute",
       // inset: "40px 5px 15px !important",
       lineHeight: "1.30",
@@ -238,7 +238,7 @@ export const App = () => {
     tocButton: {
       ...ReactReaderStyle.tocButton,
       left: "none",
-      right: "12%",
+      right: "9%",
       position: "fixed",
     },
     tocButtonBarTop: {
@@ -266,7 +266,7 @@ export const App = () => {
     readerArea: {
       ...ReactReaderStyle.readerArea,
       background: "#48484a",
-      transform: "scaleX(1.2)",
+      transform: "scaleX(1.15)",
       lineHeight: "1.30",
     },
     prev: {
@@ -291,7 +291,7 @@ export const App = () => {
     tocButton: {
       ...ReactReaderStyle.tocButton,
       left: "none",
-      right: "12%",
+      right: "9%",
       position: "fixed",
     },
 
@@ -309,7 +309,7 @@ export const App = () => {
     readerArea: {
       ...ReactReaderStyle.readerArea,
       background: "#ceeaba",
-      transform: "scaleX(1.2)",
+      transform: "scaleX(1.15)",
       lineHeight: "1.30",
     },
     prev: {
@@ -334,7 +334,7 @@ export const App = () => {
     tocButton: {
       ...ReactReaderStyle.tocButton,
       left: "none",
-      right: "12%",
+      right: "9%",
       position: "fixed",
     },
 
@@ -352,7 +352,7 @@ export const App = () => {
     readerArea: {
       ...ReactReaderStyle.readerArea,
       background: "#f8f2e5",
-      transform: "scaleX(1.2)",
+      transform: "scaleX(1.15)",
       lineHeight: "1.30",
     },
     prev: {
@@ -377,7 +377,7 @@ export const App = () => {
     tocButton: {
       ...ReactReaderStyle.tocButton,
       left: "none",
-      right: "12%",
+      right: "9%",
       position: "fixed",
     },
 
