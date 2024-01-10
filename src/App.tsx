@@ -177,8 +177,8 @@ export const App = () => {
     readerArea: {
       ...ReactReaderStyle.readerArea,
       background: "#fff",
-      transform: "scale(1.3)",
-      marginTop: "130px",
+      transform: "scale(1.4)",
+      marginTop: "150px",
       lineHeight: "1.20",
     },
     prev: {
@@ -223,9 +223,9 @@ export const App = () => {
     readerArea: {
       ...ReactReaderStyle.readerArea,
       background: "#000",
-      transform: "scale(1.3)",
+      transform: "scale(1.4)",
       lineHeight: "1.20",
-      marginTop: "130px",
+      marginTop: "150px",
     },
     prev: {
       display: "none",
@@ -268,9 +268,9 @@ export const App = () => {
     readerArea: {
       ...ReactReaderStyle.readerArea,
       background: "#48484a",
-      transform: "scale(1.3)",
+      transform: "scale(1.4)",
       lineHeight: "1.20",
-      marginTop: "130px",
+      marginTop: "150px",
     },
     prev: {
       display: "none",
@@ -313,9 +313,9 @@ export const App = () => {
     readerArea: {
       ...ReactReaderStyle.readerArea,
       background: "#ceeaba",
-      transform: "scale(1.3)",
+      transform: "scale(1.4)",
       lineHeight: "1.20",
-      marginTop: "130px",
+      marginTop: "150px",
     },
     prev: {
       display: "none",
@@ -358,9 +358,9 @@ export const App = () => {
     readerArea: {
       ...ReactReaderStyle.readerArea,
       background: "#f8f2e5",
-      transform: "scale(1.3)",
+      transform: "scale(1.4)",
       lineHeight: "1.20",
-      marginTop: "130px",
+      marginTop: "150px",
     },
     prev: {
       display: "none",
