@@ -46,7 +46,7 @@ function updateFontFamily(rendition: Rendition, font: string) {
     case "'Roboto', sans-serif": {
       themes.override("font-family", "'Roboto', sans-serif");
       // themes.override("font-style", "italic");
-      themes.override("font-weight", "400");
+      themes.override("font-weight", "900");
       break;
     }
     case "'Literata', serif": {
@@ -196,7 +196,7 @@ export const App = () => {
       right: "9%",
       position: "fixed",
       zIndex: 999,
-      translate: "-17px 4px",
+      translate: "-15px 4px",
     },
     tocButtonBarTop: {
       ...ReactReaderStyle.tocButtonBarTop,
@@ -241,7 +241,7 @@ export const App = () => {
       left: "none",
       right: "9%",
       position: "fixed",
-      translate: "-17px 4px",
+      translate: "-15px 4px",
     },
     tocButtonBarTop: {
       ...ReactReaderStyle.tocButtonBarTop,
@@ -296,7 +296,7 @@ export const App = () => {
       left: "none",
       right: "9%",
       position: "fixed",
-      translate: "-17px 4px",
+      translate: "-15px 4px",
     },
 
     tocArea: {
@@ -341,7 +341,7 @@ export const App = () => {
       left: "none",
       right: "9%",
       position: "fixed",
-      translate: "-17px 4px",
+      translate: "-15px 4px",
     },
 
     tocArea: {
@@ -386,7 +386,7 @@ export const App = () => {
       left: "none",
       right: "9%",
       position: "fixed",
-      translate: "-17px 4px",
+      translate: "-15px 4px",
     },
 
     tocArea: {
