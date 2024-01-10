@@ -178,10 +178,12 @@ export const App = () => {
 
   useEffect(() => {
     const localMode = localStorage.getItem("mode");
-    if (localMode) {
-      setMode(localMode);
-    }
-  }, []);
+    setTimeout(() => {
+      if (localMode) {
+        setMode(localMode);
+      }
+    }, 500);
+  }, [rendition.current]);
 
   useEffect(() => {
     const locTheme = localStorage.getItem("theme");
