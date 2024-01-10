@@ -176,25 +176,27 @@ export const App = () => {
     setTimeout(() => {
       const iframe = document.querySelector("iframe");
 
-      const srcDoc = iframe?.srcdoc;
-      const parser = new DOMParser();
-      const iframeDoc = parser.parseFromString(srcDoc || "", "text/html");
+      if (iframe?.srcdoc) {
+        const srcDoc = iframe?.srcdoc;
+        const parser = new DOMParser();
+        const iframeDoc = parser.parseFromString(srcDoc || "", "text/html");
 
-      const body = iframeDoc.querySelector("body");
+        const body = iframeDoc.querySelector("body");
 
-      const div = document.createElement("div");
+        const div = document.createElement("div");
 
-      div.style.height = "120px";
-      div.id = "abduvohid-aka-id";
+        div.style.height = "120px";
+        div.id = "abduvohid-aka-id";
 
-      body?.appendChild(div);
+        body?.appendChild(div);
 
-      const modifiedHtmlString = new XMLSerializer().serializeToString(
-        iframeDoc
-      );
+        const modifiedHtmlString = new XMLSerializer().serializeToString(
+          iframeDoc
+        );
 
-      // Update iframe srcdoc with modified content
-      iframe.srcdoc = modifiedHtmlString;
+        // Update iframe srcdoc with modified content
+        iframe.srcdoc = modifiedHtmlString;
+      }
     }, 1000);
   }, []);
 
