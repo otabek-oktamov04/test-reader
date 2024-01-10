@@ -119,7 +119,7 @@ export const App = () => {
             paragraph.style.hyphens = "auto";
             paragraph.style.textAlign = "justify";
             paragraph.style.lineHeight = "25px";
-            // paragraph.style.inset = "40px 15px 5px";
+            // paragraph.style.inset = "0px 0px 0px 0px";
           });
 
           // Convert the modified document back to string
@@ -177,8 +177,9 @@ export const App = () => {
     readerArea: {
       ...ReactReaderStyle.readerArea,
       background: "#fff",
-      transform: "scaleX(1.15)",
-      lineHeight: "1.30",
+      transform: "scale(1.3)",
+      marginTop: "150px",
+      lineHeight: "1.20",
     },
     prev: {
       display: "none",
@@ -195,6 +196,7 @@ export const App = () => {
       right: "9%",
       position: "fixed",
       zIndex: 999,
+      translate: "-15px 6px",
     },
     tocButtonBarTop: {
       ...ReactReaderStyle.tocButtonBarTop,
@@ -204,7 +206,7 @@ export const App = () => {
     tocButtonBottom: {
       ...ReactReaderStyle.tocButtonBottom,
       background: "#4D5250",
-      height: "3px",
+      height: "2px",
     },
 
     tocArea: {
@@ -221,10 +223,9 @@ export const App = () => {
     readerArea: {
       ...ReactReaderStyle.readerArea,
       background: "#000",
-      transform: "scaleX(1.15)",
-      // position: "absolute",
-      // inset: "40px 5px 15px !important",
-      lineHeight: "1.30",
+      transform: "scale(1.3)",
+      lineHeight: "1.20",
+      marginTop: "150px",
     },
     prev: {
       display: "none",
@@ -240,6 +241,7 @@ export const App = () => {
       left: "none",
       right: "9%",
       position: "fixed",
+      translate: "-15px 6px",
     },
     tocButtonBarTop: {
       ...ReactReaderStyle.tocButtonBarTop,
@@ -249,7 +251,7 @@ export const App = () => {
     tocButtonBottom: {
       ...ReactReaderStyle.tocButtonBottom,
       background: "#4D5250",
-      height: "3px",
+      height: "2px",
     },
 
     tocArea: {
@@ -266,8 +268,9 @@ export const App = () => {
     readerArea: {
       ...ReactReaderStyle.readerArea,
       background: "#48484a",
-      transform: "scaleX(1.15)",
-      lineHeight: "1.30",
+      transform: "scale(1.3)",
+      lineHeight: "1.20",
+      marginTop: "150px",
     },
     prev: {
       display: "none",
@@ -286,13 +289,14 @@ export const App = () => {
     tocButtonBottom: {
       ...ReactReaderStyle.tocButtonBottom,
       background: "#4D5250",
-      height: "3px",
+      height: "2px",
     },
     tocButton: {
       ...ReactReaderStyle.tocButton,
       left: "none",
       right: "9%",
       position: "fixed",
+      translate: "-15px 6px",
     },
 
     tocArea: {
@@ -309,8 +313,9 @@ export const App = () => {
     readerArea: {
       ...ReactReaderStyle.readerArea,
       background: "#ceeaba",
-      transform: "scaleX(1.15)",
-      lineHeight: "1.30",
+      transform: "scale(1.3)",
+      lineHeight: "1.20",
+      marginTop: "150px",
     },
     prev: {
       display: "none",
@@ -336,6 +341,7 @@ export const App = () => {
       left: "none",
       right: "9%",
       position: "fixed",
+      translate: "-15px 6px",
     },
 
     tocArea: {
@@ -352,8 +358,9 @@ export const App = () => {
     readerArea: {
       ...ReactReaderStyle.readerArea,
       background: "#f8f2e5",
-      transform: "scaleX(1.15)",
-      lineHeight: "1.30",
+      transform: "scale(1.3)",
+      lineHeight: "1.20",
+      marginTop: "150px",
     },
     prev: {
       display: "none",
@@ -379,6 +386,7 @@ export const App = () => {
       left: "none",
       right: "9%",
       position: "fixed",
+      translate: "-15px 6px",
     },
 
     tocArea: {
@@ -503,7 +511,7 @@ export const App = () => {
           position: "absolute",
           top: "15px",
           right: "44px",
-          zIndex: 99,
+          zIndex: 100,
         }}
       >
         <img
