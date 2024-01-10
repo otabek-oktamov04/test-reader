@@ -114,7 +114,7 @@ export const App = () => {
           const paragraphs = iframeDoc.querySelectorAll("p");
 
           paragraphs.forEach((paragraph) => {
-            // paragraph.className = "";
+            paragraph.className = "";
             paragraph.setAttribute("lang", "de-1996");
             paragraph.style.hyphens = "auto";
             paragraph.style.textAlign = "justify";
