@@ -118,7 +118,7 @@ export const App = () => {
             paragraph.setAttribute("lang", "de-1996");
             paragraph.style.hyphens = "auto";
             paragraph.style.textAlign = "justify";
-            paragraph.style.lineHeight = "27px";
+            // paragraph.style.lineHeight = "27px";
           });
 
           const links = iframeDoc.querySelectorAll("a");
@@ -265,7 +265,7 @@ export const App = () => {
       right: "9%",
       position: "fixed",
       zIndex: 999,
-      translate: "-20px -2px",
+      translate: "-20px -4px",
     },
     tocButtonBarTop: {
       ...ReactReaderStyle.tocButtonBarTop,
@@ -310,7 +310,7 @@ export const App = () => {
       left: "none",
       right: "9%",
       position: "fixed",
-      translate: "-20px -2px",
+      translate: "-20px -4px",
     },
     tocButtonBarTop: {
       ...ReactReaderStyle.tocButtonBarTop,
@@ -365,7 +365,7 @@ export const App = () => {
       left: "none",
       right: "9%",
       position: "fixed",
-      translate: "-20px -2px",
+      translate: "-20px -4px",
     },
 
     tocArea: {
@@ -410,7 +410,7 @@ export const App = () => {
       left: "none",
       right: "9%",
       position: "fixed",
-      translate: "-20px -2px",
+      translate: "-20px -4px",
     },
 
     tocArea: {
@@ -455,7 +455,7 @@ export const App = () => {
       left: "none",
       right: "9%",
       position: "fixed",
-      translate: "-20px -2px",
+      translate: "-20px -4px",
     },
 
     tocArea: {
