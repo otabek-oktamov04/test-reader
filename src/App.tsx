@@ -119,7 +119,6 @@ export const App = () => {
             paragraph.style.hyphens = "auto";
             paragraph.style.textAlign = "justify";
             paragraph.style.lineHeight = "25px";
-            // paragraph.style.inset = "0px 0px 0px 0px";
           });
 
           // Convert the modified document back to string
@@ -172,14 +171,41 @@ export const App = () => {
   useEffect(() => {
     rendition.current?.themes.fontSize(`${fontSize}%`);
   }, [fontSize]);
+
+  useEffect(() => {
+    setTimeout(() => {
+      const iframe = document.querySelector("iframe");
+
+      const srcDoc = iframe?.srcdoc;
+      const parser = new DOMParser();
+      const iframeDoc = parser.parseFromString(srcDoc || "", "text/html");
+
+      const body = iframeDoc.querySelector("body");
+
+      const div = document.createElement("div");
+
+      div.style.height = "120px";
+      div.id = "abduvohid-aka-id";
+
+      body?.appendChild(div);
+
+      const modifiedHtmlString = new XMLSerializer().serializeToString(
+        iframeDoc
+      );
+
+      // Update iframe srcdoc with modified content
+      iframe.srcdoc = modifiedHtmlString;
+    }, 1000);
+  }, []);
+
   const lightReaderTheme: IReactReaderStyle = {
     ...ReactReaderStyle,
     readerArea: {
       ...ReactReaderStyle.readerArea,
       background: "#fff",
       transform: "scale(1.4)",
-      marginTop: "150px",
       lineHeight: "1.20",
+      marginTop: "150px",
     },
     prev: {
       display: "none",
