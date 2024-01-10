@@ -196,7 +196,7 @@ export const App = () => {
       right: "9%",
       position: "fixed",
       zIndex: 999,
-      translate: "-15px 20px",
+      translate: "-15px 6px",
     },
     tocButtonBarTop: {
       ...ReactReaderStyle.tocButtonBarTop,
@@ -241,7 +241,7 @@ export const App = () => {
       left: "none",
       right: "9%",
       position: "fixed",
-      translate: "-15px 20px",
+      translate: "-15px 6px",
     },
     tocButtonBarTop: {
       ...ReactReaderStyle.tocButtonBarTop,
@@ -296,7 +296,7 @@ export const App = () => {
       left: "none",
       right: "9%",
       position: "fixed",
-      translate: "-15px 20px",
+      translate: "-15px 6px",
     },
 
     tocArea: {
@@ -341,7 +341,7 @@ export const App = () => {
       left: "none",
       right: "9%",
       position: "fixed",
-      translate: "-15px 20px",
+      translate: "-15px 6px",
     },
 
     tocArea: {
@@ -386,7 +386,7 @@ export const App = () => {
       left: "none",
       right: "9%",
       position: "fixed",
-      translate: "-15px 20px",
+      translate: "-15px 6px",
     },
 
     tocArea: {
