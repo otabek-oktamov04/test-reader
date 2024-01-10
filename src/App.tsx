@@ -178,7 +178,7 @@ export const App = () => {
       ...ReactReaderStyle.readerArea,
       background: "#fff",
       transform: "scale(1.4)",
-      marginTop: "150px",
+      // marginTop: "150px",
       lineHeight: "1.20",
     },
     prev: {
