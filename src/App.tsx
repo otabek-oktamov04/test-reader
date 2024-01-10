@@ -121,6 +121,48 @@ export const App = () => {
             paragraph.style.lineHeight = "25px";
           });
 
+          const links = iframeDoc.querySelectorAll("a");
+
+          links.forEach((link) => {
+            if (!link.textContent) {
+              link.appendChild(link.nextSibling!);
+              link.nextSibling?.remove();
+            }
+
+            link.style.color = "#000";
+            // link.style.display = "flex";
+            // link.style.justifyContent = "center";
+            link.style.fontSize = "1em";
+            link.style.fontStyle = "normal";
+            link.style.fontVariant = "normal";
+            link.style.fontWeight = "bold";
+            link.style.lineHeight = "1.2";
+            link.style.marginBottom = "0";
+            link.style.marginLeft = "0";
+            link.style.marginRight = "0";
+            link.style.marginTop = "0";
+            link.style.orphans = "1";
+            link.style.pageBreakAfter = "auto";
+            link.style.pageBreakBefore = "auto";
+            link.style.textAlign = "center";
+            link.style.textDecoration = "none";
+            link.style.textIndent = "0";
+            link.style.textTransform = "none";
+            link.style.widows = "1";
+          });
+
+          // const spans = iframeDoc.querySelectorAll("span");
+
+          // spans.forEach((span) => {
+          //   if (!span.textContent) {
+          //     span.appendChild(span.nextSibling!);
+          //     span.nextSibling?.remove();
+          //   }
+          //   span.className = "";
+          //   span.style.color = "red";
+          //   span.style.textAlign = "justify";
+          // });
+
           // Convert the modified document back to string
           const modifiedHtmlString = new XMLSerializer().serializeToString(
             iframeDoc
