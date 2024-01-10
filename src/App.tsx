@@ -173,31 +173,28 @@ export const App = () => {
   }, [fontSize]);
 
   useEffect(() => {
-    setTimeout(() => {
-      const iframe = document.querySelector("iframe");
+    const iframe = document.querySelector("iframe");
 
-      if (iframe?.srcdoc) {
-        const srcDoc = iframe?.srcdoc;
-        const parser = new DOMParser();
-        const iframeDoc = parser.parseFromString(srcDoc || "", "text/html");
+    if (iframe?.srcdoc) {
+      const srcDoc = iframe?.srcdoc;
+      const parser = new DOMParser();
+      const iframeDoc = parser.parseFromString(srcDoc || "", "text/html");
 
-        const body = iframeDoc.querySelector("body");
+      const body = iframeDoc.querySelector("body");
 
-        const div = document.createElement("div");
+      const div = document.createElement("div");
 
-        div.style.height = "120px";
-        div.id = "abduvohid-aka-id";
+      div.style.height = "250px";
 
-        body?.appendChild(div);
+      body?.appendChild(div);
 
-        const modifiedHtmlString = new XMLSerializer().serializeToString(
-          iframeDoc
-        );
+      const modifiedHtmlString = new XMLSerializer().serializeToString(
+        iframeDoc
+      );
 
-        // Update iframe srcdoc with modified content
-        iframe.srcdoc = modifiedHtmlString;
-      }
-    }, 1000);
+      // Update iframe srcdoc with modified content
+      iframe.srcdoc = modifiedHtmlString;
+    }
   }, []);
 
   const lightReaderTheme: IReactReaderStyle = {
