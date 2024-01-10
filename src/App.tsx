@@ -248,7 +248,7 @@ export const App = () => {
       background: "#fff",
       transform: "scale(1.35)",
       lineHeight: "1.20",
-      marginTop: "150px",
+      marginTop: "130px",
     },
     prev: {
       display: "none",
@@ -265,7 +265,7 @@ export const App = () => {
       right: "9%",
       position: "fixed",
       zIndex: 999,
-      translate: "-20px 4px",
+      translate: "-20px -6px",
     },
     tocButtonBarTop: {
       ...ReactReaderStyle.tocButtonBarTop,
@@ -294,7 +294,7 @@ export const App = () => {
       background: "#000",
       transform: "scale(1.35)",
       lineHeight: "1.20",
-      marginTop: "150px",
+      marginTop: "130px",
     },
     prev: {
       display: "none",
@@ -310,7 +310,7 @@ export const App = () => {
       left: "none",
       right: "9%",
       position: "fixed",
-      translate: "-20px 4px",
+      translate: "-20px -6px",
     },
     tocButtonBarTop: {
       ...ReactReaderStyle.tocButtonBarTop,
@@ -339,7 +339,7 @@ export const App = () => {
       background: "#48484a",
       transform: "scale(1.35)",
       lineHeight: "1.20",
-      marginTop: "150px",
+      marginTop: "130px",
     },
     prev: {
       display: "none",
@@ -365,7 +365,7 @@ export const App = () => {
       left: "none",
       right: "9%",
       position: "fixed",
-      translate: "-20px 4px",
+      translate: "-20px -6px",
     },
 
     tocArea: {
@@ -384,7 +384,7 @@ export const App = () => {
       background: "#ceeaba",
       transform: "scale(1.35)",
       lineHeight: "1.20",
-      marginTop: "150px",
+      marginTop: "130px",
     },
     prev: {
       display: "none",
@@ -410,7 +410,7 @@ export const App = () => {
       left: "none",
       right: "9%",
       position: "fixed",
-      translate: "-20px 4px",
+      translate: "-20px -6px",
     },
 
     tocArea: {
@@ -429,7 +429,7 @@ export const App = () => {
       background: "#f8f2e5",
       transform: "scale(1.35)",
       lineHeight: "1.20",
-      marginTop: "150px",
+      marginTop: "130px",
     },
     prev: {
       display: "none",
@@ -455,7 +455,7 @@ export const App = () => {
       left: "none",
       right: "9%",
       position: "fixed",
-      translate: "-20px 4px",
+      translate: "-20px -6px",
     },
 
     tocArea: {
