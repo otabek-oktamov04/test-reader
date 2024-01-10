@@ -129,7 +129,7 @@ export const App = () => {
               link.nextSibling?.remove();
             }
 
-            link.style.color = "#000";
+            // link.style.color = "#000";
             // link.style.display = "flex";
             // link.style.justifyContent = "center";
             link.style.fontSize = "1em";
@@ -246,7 +246,7 @@ export const App = () => {
     readerArea: {
       ...ReactReaderStyle.readerArea,
       background: "#fff",
-      transform: "scale(1.4)",
+      transform: "scale(1.35)",
       lineHeight: "1.20",
       marginTop: "150px",
     },
@@ -292,7 +292,7 @@ export const App = () => {
     readerArea: {
       ...ReactReaderStyle.readerArea,
       background: "#000",
-      transform: "scale(1.4)",
+      transform: "scale(1.35)",
       lineHeight: "1.20",
       marginTop: "150px",
     },
@@ -337,7 +337,7 @@ export const App = () => {
     readerArea: {
       ...ReactReaderStyle.readerArea,
       background: "#48484a",
-      transform: "scale(1.4)",
+      transform: "scale(1.35)",
       lineHeight: "1.20",
       marginTop: "150px",
     },
@@ -382,7 +382,7 @@ export const App = () => {
     readerArea: {
       ...ReactReaderStyle.readerArea,
       background: "#ceeaba",
-      transform: "scale(1.4)",
+      transform: "scale(1.35)",
       lineHeight: "1.20",
       marginTop: "150px",
     },
@@ -427,7 +427,7 @@ export const App = () => {
     readerArea: {
       ...ReactReaderStyle.readerArea,
       background: "#f8f2e5",
-      transform: "scale(1.4)",
+      transform: "scale(1.35)",
       lineHeight: "1.20",
       marginTop: "150px",
     },
