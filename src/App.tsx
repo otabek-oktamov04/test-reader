@@ -848,7 +848,7 @@ export const App = () => {
             <div
               className="color selected"
               onClick={() => {
-                if (fontSize < 150) {
+                if (fontSize < 155) {
                   setFontSize(fontSize + 10);
                   localStorage.setItem("fontSize", String(fontSize));
                   setSelectedStyles({
