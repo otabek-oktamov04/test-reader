@@ -197,14 +197,14 @@ export const App = () => {
       ) {
         rendition.current.themes.override("color", "#fff");
       }
-    }, 500);
-  }, [rendition.current]);
+    }, 200);
+  }, [theme, rendition.current]);
 
   useEffect(() => {
     if (rendition.current) {
       updateTheme(rendition.current, theme);
     }
-  }, [theme]);
+  }, [theme, rendition.current]);
 
   useEffect(() => {
     if (rendition.current) {
@@ -581,7 +581,7 @@ export const App = () => {
         style={{
           position: "absolute",
           top: "15px",
-          right: "44px",
+          right: "55px",
           zIndex: 100,
         }}
       >
