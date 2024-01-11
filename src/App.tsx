@@ -7,7 +7,7 @@ function updateTheme(rendition: Rendition, theme: string) {
   const themes = rendition.themes;
   switch (theme) {
     case "dark": {
-      themes.override("color", "#fff");
+      themes.override("color", "#fff ");
       themes.override("background", "#000");
       break;
     }
@@ -187,24 +187,27 @@ export const App = () => {
 
   useEffect(() => {
     const locTheme = localStorage.getItem("theme");
+
     if (locTheme) {
       setTheme(locTheme || "light");
     }
+
     setTimeout(() => {
       if (
         (locTheme === "dark" || locTheme === "midDark") &&
         rendition.current
       ) {
-        rendition.current.themes.override("color", "#fff");
+        console.log("ok");
+        rendition.current.themes.override("color", "#fff", true);
       }
     }, 200);
-  }, [theme, rendition.current]);
+  }, [rendition.current]);
 
   useEffect(() => {
     if (rendition.current) {
       updateTheme(rendition.current, theme);
     }
-  }, [theme, rendition.current]);
+  }, [rendition.current]);
 
   useEffect(() => {
     if (rendition.current) {
@@ -293,6 +296,7 @@ export const App = () => {
     ...ReactReaderStyle,
     readerArea: {
       ...ReactReaderStyle.readerArea,
+      color: "#fff ",
       background: "#000",
       transform: "scale(1.32)",
       lineHeight: "1.20",
@@ -339,6 +343,7 @@ export const App = () => {
     readerArea: {
       ...ReactReaderStyle.readerArea,
       background: "#48484a",
+      color: "#fff",
       transform: "scale(1.32)",
       lineHeight: "1.20",
       marginTop: "130px",
