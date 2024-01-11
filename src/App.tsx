@@ -46,7 +46,7 @@ function updateFontFamily(rendition: Rendition, font: string) {
     case "'Roboto', sans-serif": {
       themes.override("font-family", "'Roboto', sans-serif");
       // themes.override("font-style", "italic");
-      themes.override("font-weight", "900");
+      themes.override("font-weight", "400");
       break;
     }
     case "'Literata', serif": {
@@ -118,34 +118,8 @@ export const App = () => {
             paragraph.setAttribute("lang", "de-1996");
             paragraph.style.hyphens = "auto";
             paragraph.style.textAlign = "justify";
-            // paragraph.style.lineHeight = "27px";
-          });
-
-          const links = iframeDoc.querySelectorAll("a");
-
-          links.forEach((link) => {
-            if (!link.textContent) {
-              link.appendChild(link.nextSibling!);
-              link.nextSibling?.remove();
-            }
-
-            link.style.fontSize = "1em";
-            link.style.fontStyle = "normal";
-            link.style.fontVariant = "normal";
-            link.style.fontWeight = "bold";
-            link.style.lineHeight = "1.2";
-            link.style.marginBottom = "0";
-            link.style.marginLeft = "0";
-            link.style.marginRight = "0";
-            link.style.marginTop = "0";
-            link.style.orphans = "1";
-            link.style.pageBreakAfter = "auto";
-            link.style.pageBreakBefore = "auto";
-            link.style.textAlign = "center";
-            link.style.textDecoration = "none";
-            link.style.textIndent = "0";
-            link.style.textTransform = "none";
-            link.style.widows = "1";
+            paragraph.style.lineHeight = "25px";
+            // paragraph.style.inset = "40px 15px 5px";
           });
 
           // Convert the modified document back to string
@@ -171,12 +145,6 @@ export const App = () => {
   }, [rendition.current]);
 
   useEffect(() => {
-    if (rendition.current) {
-      updateTheme(rendition.current, theme);
-    }
-  }, [rendition.current, theme]);
-
-  useEffect(() => {
     const locTheme = localStorage.getItem("theme");
 
     // if (locTheme) {
@@ -192,6 +160,12 @@ export const App = () => {
       }
     }, 200);
   }, [rendition.current]);
+
+  useEffect(() => {
+    if (rendition.current) {
+      updateTheme(rendition.current, theme);
+    }
+  }, [theme]);
 
   useEffect(() => {
     if (rendition.current) {
@@ -874,7 +848,7 @@ export const App = () => {
             <div
               className="color selected"
               onClick={() => {
-                if (fontSize < 120) {
+                if (fontSize < 150) {
                   setFontSize(fontSize + 10);
                   localStorage.setItem("fontSize", String(fontSize));
                   setSelectedStyles({
