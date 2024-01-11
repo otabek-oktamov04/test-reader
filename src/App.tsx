@@ -129,9 +129,6 @@ export const App = () => {
               link.nextSibling?.remove();
             }
 
-            // link.style.color = "#000";
-            // link.style.display = "flex";
-            // link.style.justifyContent = "center";
             link.style.fontSize = "1em";
             link.style.fontStyle = "normal";
             link.style.fontVariant = "normal";
@@ -150,18 +147,6 @@ export const App = () => {
             link.style.textTransform = "none";
             link.style.widows = "1";
           });
-
-          // const spans = iframeDoc.querySelectorAll("span");
-
-          // spans.forEach((span) => {
-          //   if (!span.textContent) {
-          //     span.appendChild(span.nextSibling!);
-          //     span.nextSibling?.remove();
-          //   }
-          //   span.className = "";
-          //   span.style.color = "red";
-          //   span.style.textAlign = "justify";
-          // });
 
           // Convert the modified document back to string
           const modifiedHtmlString = new XMLSerializer().serializeToString(
@@ -194,9 +179,9 @@ export const App = () => {
   useEffect(() => {
     const locTheme = localStorage.getItem("theme");
 
-    if (locTheme) {
-      setTheme(locTheme || "light");
-    }
+    // if (locTheme) {
+    //   setTheme(locTheme || "light");
+    // }
 
     setTimeout(() => {
       if (
@@ -206,7 +191,7 @@ export const App = () => {
         rendition.current.themes.override("color", "#fff");
       }
     }, 200);
-  }, [rendition.current, theme]);
+  }, [rendition.current]);
 
   useEffect(() => {
     if (rendition.current) {
@@ -889,7 +874,7 @@ export const App = () => {
             <div
               className="color selected"
               onClick={() => {
-                if (fontSize < 400) {
+                if (fontSize < 120) {
                   setFontSize(fontSize + 10);
                   localStorage.setItem("fontSize", String(fontSize));
                   setSelectedStyles({
