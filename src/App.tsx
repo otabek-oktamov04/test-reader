@@ -7,7 +7,7 @@ function updateTheme(rendition: Rendition, theme: string) {
   const themes = rendition.themes;
   switch (theme) {
     case "dark": {
-      themes.override("color", "#fff ");
+      themes.override("color", "#fff");
       themes.override("background", "#000");
       break;
     }
@@ -186,6 +186,12 @@ export const App = () => {
   }, [rendition.current]);
 
   useEffect(() => {
+    if (rendition.current) {
+      updateTheme(rendition.current, theme);
+    }
+  }, [rendition.current, theme]);
+
+  useEffect(() => {
     const locTheme = localStorage.getItem("theme");
 
     if (locTheme) {
@@ -197,17 +203,10 @@ export const App = () => {
         (locTheme === "dark" || locTheme === "midDark") &&
         rendition.current
       ) {
-        console.log("ok");
-        rendition.current.themes.override("color", "#fff", true);
+        rendition.current.themes.override("color", "#fff");
       }
     }, 200);
-  }, [rendition.current]);
-
-  useEffect(() => {
-    if (rendition.current) {
-      updateTheme(rendition.current, theme);
-    }
-  }, [rendition.current]);
+  }, [rendition.current, theme]);
 
   useEffect(() => {
     if (rendition.current) {
