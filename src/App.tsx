@@ -6,16 +6,17 @@ import "./App.css";
 function updateTheme(rendition: Rendition, theme: string) {
   const themes = rendition.themes;
   switch (theme) {
-    case "dark": {
-      themes.override("color", "#fff");
-      themes.override("background", "#000");
-      break;
-    }
     case "light": {
       themes.override("color", "#000");
       themes.override("background", "#fff");
       break;
     }
+    case "dark": {
+      themes.override("color", "#fff");
+      themes.override("background", "#000");
+      break;
+    }
+
     case "green": {
       themes.override("color", "#000");
       themes.override("background", "#ceeaba");
@@ -46,7 +47,7 @@ function updateFontFamily(rendition: Rendition, font: string) {
     case "'Roboto', sans-serif": {
       themes.override("font-family", "'Roboto', sans-serif");
       // themes.override("font-style", "italic");
-      themes.override("font-weight", "400");
+      themes.override("font-weight", "900");
       break;
     }
     case "'Literata', serif": {
@@ -104,13 +105,12 @@ export const App = () => {
     setIsLoading(true);
     setTimeout(() => {
       const doc = document.querySelectorAll("iframe");
+
       doc.forEach((item) => {
         if (item.srcdoc) {
           const srcDoc = item.srcdoc;
           const parser = new DOMParser();
           const iframeDoc = parser.parseFromString(srcDoc, "text/html");
-
-          // Find all <p> elements and set lang='eng' and styles
           const paragraphs = iframeDoc.querySelectorAll("p");
 
           paragraphs.forEach((paragraph) => {
@@ -118,15 +118,39 @@ export const App = () => {
             paragraph.setAttribute("lang", "de-1996");
             paragraph.style.hyphens = "auto";
             paragraph.style.textAlign = "justify";
-            paragraph.style.lineHeight = "25px";
-            // paragraph.style.inset = "40px 15px 5px";
+          });
+
+          const links = iframeDoc.querySelectorAll("a");
+
+          links.forEach((link) => {
+            if (!link.textContent) {
+              link.appendChild(link.nextSibling!);
+              link.nextSibling?.remove();
+            }
+
+            link.style.fontSize = "1em";
+            link.style.fontStyle = "normal";
+            link.style.fontVariant = "normal";
+            link.style.fontWeight = "bold";
+            link.style.lineHeight = "1.2";
+            link.style.marginBottom = "0";
+            link.style.marginLeft = "0";
+            link.style.marginRight = "0";
+            link.style.marginTop = "0";
+            link.style.orphans = "1";
+            link.style.pageBreakAfter = "auto";
+            link.style.pageBreakBefore = "auto";
+            link.style.textAlign = "center";
+            link.style.textDecoration = "none";
+            link.style.textIndent = "0";
+            link.style.textTransform = "none";
+            link.style.widows = "1";
           });
 
           // Convert the modified document back to string
           const modifiedHtmlString = new XMLSerializer().serializeToString(
             iframeDoc
           );
-
           // Update iframe srcdoc with modified content
           item.srcdoc = modifiedHtmlString;
         }
@@ -147,9 +171,9 @@ export const App = () => {
   useEffect(() => {
     const locTheme = localStorage.getItem("theme");
 
-    // if (locTheme) {
-    //   setTheme(locTheme || "light");
-    // }
+    if (locTheme) {
+      setTheme(locTheme);
+    }
 
     setTimeout(() => {
       if (
@@ -158,7 +182,7 @@ export const App = () => {
       ) {
         rendition.current.themes.override("color", "#fff");
       }
-    }, 200);
+    }, 500);
   }, [rendition.current]);
 
   useEffect(() => {
@@ -190,14 +214,13 @@ export const App = () => {
 
         const div = document.createElement("div");
 
-        div.style.height = "250px";
+        div.style.height = "125px";
 
         body?.appendChild(div);
 
         const modifiedHtmlString = new XMLSerializer().serializeToString(
           iframeDoc
         );
-
         // Update iframe srcdoc with modified content
         iframe.srcdoc = modifiedHtmlString;
       }
@@ -209,7 +232,7 @@ export const App = () => {
     readerArea: {
       ...ReactReaderStyle.readerArea,
       background: "#fff",
-      transform: "scale(1.32)",
+      transform: "scale(1.3)",
       lineHeight: "1.20",
       marginTop: "130px",
     },
@@ -228,7 +251,7 @@ export const App = () => {
       right: "9%",
       position: "fixed",
       zIndex: 999,
-      translate: "-20px -4px",
+      translate: "-20px -2px",
     },
     tocButtonBarTop: {
       ...ReactReaderStyle.tocButtonBarTop,
@@ -256,7 +279,7 @@ export const App = () => {
       ...ReactReaderStyle.readerArea,
       color: "#fff ",
       background: "#000",
-      transform: "scale(1.32)",
+      transform: "scale(1.3)",
       lineHeight: "1.20",
       marginTop: "130px",
     },
@@ -302,7 +325,7 @@ export const App = () => {
       ...ReactReaderStyle.readerArea,
       background: "#48484a",
       color: "#fff",
-      transform: "scale(1.32)",
+      transform: "scale(1.3)",
       lineHeight: "1.20",
       marginTop: "130px",
     },
@@ -347,7 +370,7 @@ export const App = () => {
     readerArea: {
       ...ReactReaderStyle.readerArea,
       background: "#ceeaba",
-      transform: "scale(1.32)",
+      transform: "scale(1.3)",
       lineHeight: "1.20",
       marginTop: "130px",
     },
@@ -392,7 +415,7 @@ export const App = () => {
     readerArea: {
       ...ReactReaderStyle.readerArea,
       background: "#f8f2e5",
-      transform: "scale(1.32)",
+      transform: "scale(1.3)",
       lineHeight: "1.20",
       marginTop: "130px",
     },
@@ -848,7 +871,7 @@ export const App = () => {
             <div
               className="color selected"
               onClick={() => {
-                if (fontSize < 155) {
+                if (fontSize < 150) {
                   setFontSize(fontSize + 10);
                   localStorage.setItem("fontSize", String(fontSize));
                   setSelectedStyles({
