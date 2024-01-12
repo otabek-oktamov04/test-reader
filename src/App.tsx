@@ -214,7 +214,7 @@ export const App = () => {
 
         const div = document.createElement("div");
 
-        div.style.height = "125px";
+        div.style.height = "250px";
 
         body?.appendChild(div);
 
@@ -232,9 +232,9 @@ export const App = () => {
     readerArea: {
       ...ReactReaderStyle.readerArea,
       background: "#fff",
-      transform: "scale(1.3)",
+      transform: "scale(1.2)",
       lineHeight: "1.20",
-      marginTop: "130px",
+      marginTop: "80px",
     },
     prev: {
       display: "none",
@@ -279,9 +279,9 @@ export const App = () => {
       ...ReactReaderStyle.readerArea,
       color: "#fff ",
       background: "#000",
-      transform: "scale(1.3)",
+      transform: "scale(1.2)",
       lineHeight: "1.20",
-      marginTop: "130px",
+      marginTop: "80px",
     },
     prev: {
       display: "none",
@@ -325,9 +325,9 @@ export const App = () => {
       ...ReactReaderStyle.readerArea,
       background: "#48484a",
       color: "#fff",
-      transform: "scale(1.3)",
+      transform: "scale(1.2)",
       lineHeight: "1.20",
-      marginTop: "130px",
+      marginTop: "80px",
     },
     prev: {
       display: "none",
@@ -370,9 +370,9 @@ export const App = () => {
     readerArea: {
       ...ReactReaderStyle.readerArea,
       background: "#ceeaba",
-      transform: "scale(1.3)",
+      transform: "scale(1.2)",
       lineHeight: "1.20",
-      marginTop: "130px",
+      marginTop: "80px",
     },
     prev: {
       display: "none",
@@ -415,9 +415,9 @@ export const App = () => {
     readerArea: {
       ...ReactReaderStyle.readerArea,
       background: "#f8f2e5",
-      transform: "scale(1.3)",
+      transform: "scale(1.2)",
       lineHeight: "1.20",
-      marginTop: "130px",
+      marginTop: "80px",
     },
     prev: {
       display: "none",
