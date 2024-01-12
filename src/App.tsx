@@ -172,7 +172,7 @@ export const App = () => {
     const locTheme = localStorage.getItem("theme");
 
     if (locTheme) {
-      setTheme(locTheme);
+      setTheme(locTheme || "light");
     }
 
     setTimeout(() => {
@@ -251,7 +251,7 @@ export const App = () => {
       right: "9%",
       position: "fixed",
       zIndex: 999,
-      translate: "-20px -2px",
+      translate: "-10px -2px",
     },
     tocButtonBarTop: {
       ...ReactReaderStyle.tocButtonBarTop,
@@ -297,7 +297,7 @@ export const App = () => {
       left: "none",
       right: "9%",
       position: "fixed",
-      translate: "-20px -4px",
+      translate: "-10px -2px",
     },
     tocButtonBarTop: {
       ...ReactReaderStyle.tocButtonBarTop,
@@ -353,7 +353,7 @@ export const App = () => {
       left: "none",
       right: "9%",
       position: "fixed",
-      translate: "-20px -4px",
+      translate: "-10px -2px",
     },
 
     tocArea: {
@@ -398,7 +398,7 @@ export const App = () => {
       left: "none",
       right: "9%",
       position: "fixed",
-      translate: "-20px -4px",
+      translate: "-10px -2px",
     },
 
     tocArea: {
@@ -443,7 +443,7 @@ export const App = () => {
       left: "none",
       right: "9%",
       position: "fixed",
-      translate: "-20px -4px",
+      translate: "-10px -2px",
     },
 
     tocArea: {
