@@ -6,17 +6,16 @@ import "./App.css";
 function updateTheme(rendition: Rendition, theme: string) {
   const themes = rendition.themes;
   switch (theme) {
-    case "light": {
-      themes.override("color", "#000");
-      themes.override("background", "#fff");
-      break;
-    }
     case "dark": {
       themes.override("color", "#fff");
       themes.override("background", "#000");
       break;
     }
-
+    case "light": {
+      themes.override("color", "#000");
+      themes.override("background", "#fff");
+      break;
+    }
     case "green": {
       themes.override("color", "#000");
       themes.override("background", "#ceeaba");
@@ -40,25 +39,25 @@ function updateFontFamily(rendition: Rendition, font: string) {
   switch (font) {
     case "'Arvo', serif": {
       themes.override("font-family", "'Arvo', serif");
-      // themes.override("font-style", "italic");
+      themes.override("font-style", "italic");
       themes.override("font-weight", "500");
       break;
     }
     case "'Roboto', sans-serif": {
       themes.override("font-family", "'Roboto', sans-serif");
-      // themes.override("font-style", "italic");
-      themes.override("font-weight", "900");
+      themes.override("font-style", "italic");
+      themes.override("font-weight", "600");
       break;
     }
     case "'Literata', serif": {
       themes.override("font-family", "'Literata', serif");
-      // themes.override("font-style", "normal");
-      themes.override("font-weight", "600");
+      themes.override("font-style", "normal");
+      themes.override("font-weight", "500");
       break;
     }
     case "'Onest', sans-serif": {
       themes.override("font-family", "'Onest', sans-serif");
-      // themes.override("font-style", "normal");
+      themes.override("font-style", "normal");
       themes.override("font-weight", "500");
       break;
     }
@@ -80,7 +79,6 @@ export const App = () => {
   });
   const [theme, setTheme] = useState("light");
   const [show, setShow] = useState(false);
-  const [chapterChange, setChapterChange] = useState("");
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -105,76 +103,45 @@ export const App = () => {
     setIsLoading(true);
     setTimeout(() => {
       const doc = document.querySelectorAll("iframe");
-
       doc.forEach((item) => {
         if (item.srcdoc) {
           const srcDoc = item.srcdoc;
           const parser = new DOMParser();
           const iframeDoc = parser.parseFromString(srcDoc, "text/html");
+
+          // Find all <p> elements and set lang='eng' and styles
           const paragraphs = iframeDoc.querySelectorAll("p");
 
           paragraphs.forEach((paragraph) => {
-            paragraph.className = "";
-            paragraph.setAttribute("lang", "de-1996");
+            paragraph.setAttribute("lang", "tk-TK");
             paragraph.style.hyphens = "auto";
-            paragraph.style.textAlign = "justify";
-          });
-
-          const links = iframeDoc.querySelectorAll("a");
-
-          links.forEach((link) => {
-            if (!link.textContent) {
-              link.appendChild(link.nextSibling!);
-              link.nextSibling?.remove();
-            }
-
-            link.style.fontSize = "1em";
-            link.style.fontStyle = "normal";
-            link.style.fontVariant = "normal";
-            link.style.fontWeight = "bold";
-            link.style.lineHeight = "1.2";
-            link.style.marginBottom = "0";
-            link.style.marginLeft = "0";
-            link.style.marginRight = "0";
-            link.style.marginTop = "0";
-            link.style.orphans = "1";
-            link.style.pageBreakAfter = "auto";
-            link.style.pageBreakBefore = "auto";
-            link.style.textAlign = "center";
-            link.style.textDecoration = "none";
-            link.style.textIndent = "0";
-            link.style.textTransform = "none";
-            link.style.widows = "1";
           });
 
           // Convert the modified document back to string
           const modifiedHtmlString = new XMLSerializer().serializeToString(
             iframeDoc
           );
+
           // Update iframe srcdoc with modified content
           item.srcdoc = modifiedHtmlString;
         }
       });
       setIsLoading(false);
     }, 1000);
-  }, [chapterChange]);
+  }, []);
 
   useEffect(() => {
     const localMode = localStorage.getItem("mode");
-    setTimeout(() => {
-      if (localMode) {
-        setMode(localMode);
-      }
-    }, 500);
-  }, [rendition.current]);
+    if (localMode) {
+      setMode(localMode);
+    }
+  }, []);
 
   useEffect(() => {
     const locTheme = localStorage.getItem("theme");
-
     if (locTheme) {
       setTheme(locTheme || "light");
     }
-
     setTimeout(() => {
       if (
         (locTheme === "dark" || locTheme === "midDark") &&
@@ -200,41 +167,12 @@ export const App = () => {
   useEffect(() => {
     rendition.current?.themes.fontSize(`${fontSize}%`);
   }, [fontSize]);
-
-  useEffect(() => {
-    setTimeout(() => {
-      const iframe = document.querySelector("iframe");
-
-      if (iframe?.srcdoc) {
-        const srcDoc = iframe?.srcdoc;
-        const parser = new DOMParser();
-        const iframeDoc = parser.parseFromString(srcDoc || "", "text/html");
-
-        const body = iframeDoc.querySelector("body");
-
-        const div = document.createElement("div");
-
-        div.style.height = "250px";
-
-        body?.appendChild(div);
-
-        const modifiedHtmlString = new XMLSerializer().serializeToString(
-          iframeDoc
-        );
-        // Update iframe srcdoc with modified content
-        iframe.srcdoc = modifiedHtmlString;
-      }
-    }, 1000);
-  }, [chapterChange]);
-
   const lightReaderTheme: IReactReaderStyle = {
     ...ReactReaderStyle,
     readerArea: {
       ...ReactReaderStyle.readerArea,
       background: "#fff",
-      transform: "scale(1.2)",
-      lineHeight: "1.20",
-      marginTop: "80px",
+      transform: "scaleX(1.3)",
     },
     prev: {
       display: "none",
@@ -248,10 +186,9 @@ export const App = () => {
     tocButton: {
       ...ReactReaderStyle.tocButton,
       left: "none",
-      right: "9%",
+      right: "12%",
       position: "fixed",
       zIndex: 999,
-      translate: "-10px -2px",
     },
     tocButtonBarTop: {
       ...ReactReaderStyle.tocButtonBarTop,
@@ -261,7 +198,7 @@ export const App = () => {
     tocButtonBottom: {
       ...ReactReaderStyle.tocButtonBottom,
       background: "#4D5250",
-      height: "2px",
+      height: "3px",
     },
 
     tocArea: {
@@ -277,11 +214,8 @@ export const App = () => {
     ...ReactReaderStyle,
     readerArea: {
       ...ReactReaderStyle.readerArea,
-      color: "#fff ",
       background: "#000",
-      transform: "scale(1.2)",
-      lineHeight: "1.20",
-      marginTop: "80px",
+      transform: "scaleX(1.3)",
     },
     prev: {
       display: "none",
@@ -295,9 +229,8 @@ export const App = () => {
     tocButton: {
       ...ReactReaderStyle.tocButton,
       left: "none",
-      right: "9%",
+      right: "12%",
       position: "fixed",
-      translate: "-10px -2px",
     },
     tocButtonBarTop: {
       ...ReactReaderStyle.tocButtonBarTop,
@@ -307,7 +240,7 @@ export const App = () => {
     tocButtonBottom: {
       ...ReactReaderStyle.tocButtonBottom,
       background: "#4D5250",
-      height: "2px",
+      height: "3px",
     },
 
     tocArea: {
@@ -324,10 +257,7 @@ export const App = () => {
     readerArea: {
       ...ReactReaderStyle.readerArea,
       background: "#48484a",
-      color: "#fff",
-      transform: "scale(1.2)",
-      lineHeight: "1.20",
-      marginTop: "80px",
+      transform: "scaleX(1.3)",
     },
     prev: {
       display: "none",
@@ -346,14 +276,13 @@ export const App = () => {
     tocButtonBottom: {
       ...ReactReaderStyle.tocButtonBottom,
       background: "#4D5250",
-      height: "2px",
+      height: "3px",
     },
     tocButton: {
       ...ReactReaderStyle.tocButton,
       left: "none",
-      right: "9%",
+      right: "12%",
       position: "fixed",
-      translate: "-10px -2px",
     },
 
     tocArea: {
@@ -370,9 +299,7 @@ export const App = () => {
     readerArea: {
       ...ReactReaderStyle.readerArea,
       background: "#ceeaba",
-      transform: "scale(1.2)",
-      lineHeight: "1.20",
-      marginTop: "80px",
+      transform: "scaleX(1.3)",
     },
     prev: {
       display: "none",
@@ -396,9 +323,8 @@ export const App = () => {
     tocButton: {
       ...ReactReaderStyle.tocButton,
       left: "none",
-      right: "9%",
+      right: "12%",
       position: "fixed",
-      translate: "-10px -2px",
     },
 
     tocArea: {
@@ -415,9 +341,7 @@ export const App = () => {
     readerArea: {
       ...ReactReaderStyle.readerArea,
       background: "#f8f2e5",
-      transform: "scale(1.2)",
-      lineHeight: "1.20",
-      marginTop: "80px",
+      transform: "scaleX(1.3)",
     },
     prev: {
       display: "none",
@@ -441,9 +365,8 @@ export const App = () => {
     tocButton: {
       ...ReactReaderStyle.tocButton,
       left: "none",
-      right: "9%",
+      right: "12%",
       position: "fixed",
-      translate: "-10px -2px",
     },
 
     tocArea: {
@@ -499,10 +422,6 @@ export const App = () => {
           if (rendition.current && toc.current) {
             const { displayed, href } = rendition.current.location.start;
             const chapter = toc.current.find((item) => item.href === href);
-            if (chapter?.id) {
-              setChapterChange(chapter.id);
-            }
-
             setPage(
               `${chapter ? chapter.label : "n/a"} Bobidagi ${
                 displayed.page
@@ -567,8 +486,8 @@ export const App = () => {
         style={{
           position: "absolute",
           top: "15px",
-          right: "55px",
-          zIndex: 100,
+          right: "44px",
+          zIndex: 99,
         }}
       >
         <img
@@ -871,7 +790,7 @@ export const App = () => {
             <div
               className="color selected"
               onClick={() => {
-                if (fontSize < 150) {
+                if (fontSize < 400) {
                   setFontSize(fontSize + 10);
                   localStorage.setItem("fontSize", String(fontSize));
                   setSelectedStyles({
